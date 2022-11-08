@@ -1,0 +1,35 @@
+{
+  "name": "calender-lib",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeTranAnhVu/calender-lib.git"
+  },
+  "author": "Brian Le",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LeTranAnhVu/calender-lib/issues"
+  },
+  "homepage": "https://github.com/LeTranAnhVu/calender-lib#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "@types/node": "^18.11.9",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
+  }
+}

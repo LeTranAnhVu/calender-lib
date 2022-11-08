@@ -1,0 +1,10 @@
+.calendar-month {
+    width: 400px;
+    display: grid;
+    /*flex-wrap: wrap;*/
+    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-row-gap: 20px;
+}
+
+.calendar-month-day {
+}
