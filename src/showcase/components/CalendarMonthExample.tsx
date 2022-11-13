@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import Calendar from "@/layout/components/CalendarMonth/CalendarMonth";
 import "./CalendarMonthExample.scss"
 
@@ -18,16 +18,25 @@ function CalendarMonthExample() {
         const year = parseInt(value)
         setYear(year)
     }
+    
+    const setToday = () => {
+        setMonth(today.getMonth() + 1)
+        setYear(today.getFullYear())
+    }
 
     return (
         <div className="calendar-month-example">
-            <h2>Calendar {month}/{year}</h2>
-            <select name="month" id="month" defaultValue={month} onChange={({target: {value}}) => changeMonth(value)}>
-                {months.map(m => <option key={m} value={m}>{m}</option>)}
-            </select> /
-            <select name="year" id="year" defaultValue={year} onChange={({target: {value}}) => changeYear(value)}>
-                {years.map(y => <option key={y} value={y}>{y}</option>)}
-            </select>
+            <h2 className="h2">
+                <button onClick={setToday} disabled={today.getMonth() + 1 === month && today.getFullYear() === year}>Today</button>
+                <select name="month" id="month" value={month}
+                        onChange={({target: {value}}) => changeMonth(value)}>
+                    {months.map(m => <option key={m} value={m}>{m}</option>)}
+                </select>
+                <select name="year" id="year" value={year} onChange={({target: {value}}) => changeYear(value)}>
+                    {years.map(y => <option key={y} value={y}>{y}</option>)}
+                </select>
+            </h2>
+
             <hr/>
             <Calendar month={month} year={year}/>
         </div>
