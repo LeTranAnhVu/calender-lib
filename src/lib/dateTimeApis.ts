@@ -4,7 +4,7 @@
  */
 const toJsMonth = (calendarMonth: number): number => {
     if (calendarMonth < 1 || calendarMonth > 12) {
-        throw Error("Calendar month invalid!")
+        throw Error("CalendarMonth month invalid!")
     }
 
     return calendarMonth - 1
