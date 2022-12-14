@@ -9,6 +9,10 @@ export default defineConfig({
             '@': resolve(__dirname, './src'),
         },
     },
+    
+    server: {
+        port: 4000
+    },
 
     css: {
         preprocessorOptions: {
