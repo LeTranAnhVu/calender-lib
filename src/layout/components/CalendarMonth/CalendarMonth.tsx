@@ -1,13 +1,13 @@
 import {useEffect, useState} from "react";
 import {getDateIndex, getNumberOfDatesInMonth} from "@/lib/dateTimeApis";
 import "./CalendarMonth.scss"
+import {rangeFromOne} from '@/lib/array/range';
+import {DAYS_OF_WEEK} from '@/lib/constants';
 
 type Props = {
     month: number
     year: number 
 }
-
-const dayNames = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
 
 function CalendarMonth({month, year}: Props) {
     const [dates, setDates] = useState<number[]>([])
@@ -16,11 +16,7 @@ function CalendarMonth({month, year}: Props) {
 
     useEffect(() => {
         const noOfDates = getNumberOfDatesInMonth(year, month);
-        let dates = []
-        for (let i = 1; i <= noOfDates; i++) {
-            dates.push(i)
-        }
-
+        let dates = rangeFromOne(noOfDates) 
         setDates(dates)
         setFirstDateIndex(getDateIndex(year, month, 1))
     }, [month, year])
@@ -33,7 +29,7 @@ function CalendarMonth({month, year}: Props) {
     return (
         <div className="calendar-month-wrapper">
             <div className="calendar-month-header">
-                {dayNames.map(name => <div key={name} className="calendar-month-header-day">{name}</div>)} 
+                {DAYS_OF_WEEK.map(name => <div key={name} className="calendar-month-header-day">{name}</div>)} 
             </div>
             <div className="calendar-month">
                 {dates.map((date) => {
