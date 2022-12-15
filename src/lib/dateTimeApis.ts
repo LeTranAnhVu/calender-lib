@@ -4,11 +4,11 @@
  */
 const toJsMonth = (calendarMonth: number): number => {
   if (calendarMonth < 1 || calendarMonth > 12) {
-    throw Error('CalendarMonth month invalid!');
+    throw Error('CalendarMonth month invalid!')
   }
 
-  return calendarMonth - 1;
-};
+  return calendarMonth - 1
+}
 
 // ================================= Public Functions =================================
 /**
@@ -18,8 +18,8 @@ const toJsMonth = (calendarMonth: number): number => {
  * @param date from 1 to 31
  */
 export const getDateIndex = (year: number, month: number, date: number): number => {
-  return new Date(year, toJsMonth(month), date).getDay();
-};
+  return new Date(year, toJsMonth(month), date).getDay()
+}
 
 /**
  * Return the number of days in specific month and year.
@@ -27,9 +27,9 @@ export const getDateIndex = (year: number, month: number, date: number): number 
  * @param month from 1 to 12
  */
 export const getNumberOfDatesInMonth = (year: number, month: number): number => {
-  const overDate = 40;
-  return overDate - new Date(year, toJsMonth(month), overDate).getDate();
-};
+  const overDate = 40
+  return overDate - new Date(year, toJsMonth(month), overDate).getDate()
+}
 
 /**
  * Get the list of date indexes in a specific month in year
@@ -38,15 +38,15 @@ export const getNumberOfDatesInMonth = (year: number, month: number): number => 
  * @param month 1..12
  */
 export const getDateIndexesInMonth = (year: number, month: number): Record<number, number[]> => {
-  const datesObj: Record<number, number[]> = {};
-  const numberOfDates = getNumberOfDatesInMonth(year, month);
+  const datesObj: Record<number, number[]> = {}
+  const numberOfDates = getNumberOfDatesInMonth(year, month)
   for (let i = 1; i <= numberOfDates; i++) {
-    const index = getDateIndex(year, month, i);
-    datesObj[index] = datesObj[index] ? [...datesObj[index], i] : [i];
+    const index = getDateIndex(year, month, i)
+    datesObj[index] = datesObj[index] ? [...datesObj[index], i] : [i]
   }
 
-  return datesObj;
-};
+  return datesObj
+}
 
 /**
  * Get the list of date indexes in a specific year
@@ -54,10 +54,10 @@ export const getDateIndexesInMonth = (year: number, month: number): Record<numbe
  * @param year
  */
 export const getDateIndexesInYear = (year: number): Record<number, Record<number, number[]>> => {
-  const datesObj: Record<number, Record<number, number[]>> = {};
+  const datesObj: Record<number, Record<number, number[]>> = {}
   for (let month = 1; month <= 12; month++) {
-    datesObj[month] = getDateIndexesInMonth(year, month);
+    datesObj[month] = getDateIndexesInMonth(year, month)
   }
 
-  return datesObj;
-};
+  return datesObj
+}

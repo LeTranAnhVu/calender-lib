@@ -5,16 +5,16 @@
  * @param step
  */
 export function range(from: number, to: number, step: number): number[] {
-  const bucket: number[] = [];
+  const bucket: number[] = []
   if (from > to) {
-    throw Error('The range function does not support for reserve range');
+    throw Error('The range function does not support for reserve range')
   }
 
   for (let i = from; i <= to; i += step) {
-    bucket.push(i);
+    bucket.push(i)
   }
 
-  return bucket;
+  return bucket
 }
 
 /**
@@ -22,7 +22,7 @@ export function range(from: number, to: number, step: number): number[] {
  * @param to: the upper range
  */
 export function rangeFromOne(to: number): number[] {
-  const from = 1;
-  const step = 1;
-  return range(from, to, step);
+  const from = 1
+  const step = 1
+  return range(from, to, step)
 }
