@@ -1,5 +1,6 @@
 import './App.css'
 import CalendarMonthExample from '@/showcase/components/CalendarMonthExample'
+import CalendarDayExample from '@/showcase/components/CalendarDayExample'
 
 function App() {
   return (
@@ -9,6 +10,8 @@ function App() {
       </div>
       <hr />
       <CalendarMonthExample />
+      <hr />
+      <CalendarDayExample />
     </div>
   )
 }
