@@ -3,12 +3,6 @@
   flex-direction: column;
   position: relative;
   
-  .task {
-    position: absolute;
-    width: 100%;
-    background: rgba(1, 238, 147, 0.53);
-  }
-  
   .time-frame-element {
     display: flex;
     flex-direction: row;

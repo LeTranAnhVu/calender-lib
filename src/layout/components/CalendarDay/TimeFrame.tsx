@@ -1,6 +1,7 @@
 import { range, rangeFromOne } from '@/lib/array/range'
 import './TimeFrame.scss'
 import { useRef } from 'react'
+import TimeFrameOverlay from './TimeFrameOverLay'
 
 const hours = range(0, 23, 1)
 
@@ -17,9 +18,7 @@ const TimeFrame = () => {
 
   return (
     <div ref={wrapperRef} className="time-frame-wrapper">
-      <div className="task">
-        <p>title</p>
-      </div>
+      <TimeFrameOverlay  title="Title" content="Meeting in an office" top={50} height={50}/>
       {hours.map((hour) => (
         <div key={hour} className="time-frame-element">
           <div className="hour">
