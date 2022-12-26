@@ -1,6 +1,8 @@
-import { range, rangeFromOne } from '@/lib/array/range'
+import { range } from '@/lib/array/range'
 import './TimeFrame.scss'
-import { useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import CurrentHourHighlight from '@/layout/components/CalendarDay/CurrentHourHighlight'
+import { TimeContext } from '@/layout/components/TimeContextProvider'
 
 const hours = range(0, 23, 1)
 
@@ -14,9 +16,24 @@ const plans = [
 
 const TimeFrame = () => {
   const wrapperRef = useRef<HTMLDivElement>(null)
+  const [currentHourTop, setCurrentHourTop] = useState(0)
+  const [wrapperHeight, setWrapperHeight] = useState(0)
+  const [pxPerHour, setPxPerHour] = useState(0)
+  const { currentHour } = useContext(TimeContext)
+
+  useEffect(() => {
+    const h = wrapperRef.current?.clientHeight ?? 0
+    setWrapperHeight(h)
+    setPxPerHour(h / 24)
+  }, [wrapperRef.current?.clientHeight])
+
+  useEffect(() => {
+    setCurrentHourTop(pxPerHour * currentHour)
+  }, [wrapperHeight, pxPerHour])
 
   return (
     <div ref={wrapperRef} className="time-frame-wrapper">
+      <CurrentHourHighlight top={currentHourTop} />
       <div className="task">
         <p>title</p>
       </div>
@@ -28,13 +45,6 @@ const TimeFrame = () => {
           <div className="content" />
         </div>
       ))}
-
-      <div className="time-frame-element">
-        <div className="hour">
-          <span>{`0.00`}</span>
-        </div>
-        <div className="content" />
-      </div>
     </div>
   )
 }

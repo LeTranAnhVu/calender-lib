@@ -1,0 +1,20 @@
+.current-hour-highlight {
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  height: 1px;
+  background: $primary;
+  .time {
+    font-size: 0.6em;
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $background;
+    padding: 0 2px;
+  }
+  .bar {
+    display: block;
+    width: 100%;
+  }
+}
