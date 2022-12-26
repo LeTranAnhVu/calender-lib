@@ -1,6 +1,6 @@
 .time-frame-overlay-wrapper {
     &::before{
-        background-color: $blue-light; // default bg color
+        background-color: $blue-light; // Default bg color
         content: "";
         width: 100%;
         height: 100%;
@@ -19,7 +19,7 @@
     .time-frame-overlay-title {
         position: relative;
         z-index: 1;
-
+        // The title is truncated in 1 line
         display: -webkit-box;
         -webkit-line-clamp: 1; 
         -webkit-box-orient: vertical;
@@ -31,20 +31,20 @@
         
         font-size: 13px;
         font-weight: 800;
-        color: $blue-light; // default color
+        color: $blue-light; // Default color
     }
 
     .time-frame-overlay-content {
         position: relative;
         z-index: 1;
-
+        // The content is truncated where having no enough place
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
 
         margin-left: 2px;
-        color: $blue-light; // default color
+        color: $blue-light; // Default color
         font-size: 11px;
     }
 }
