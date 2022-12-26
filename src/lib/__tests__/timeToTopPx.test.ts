@@ -1,20 +1,18 @@
-import { describe, expect, it } from 'vitest'
+import { test, describe, expect } from 'vitest'
 import { timeToTopPx } from '../helpers/timeToTopPx'
 
+const basCases = [-1, 0]
+const cases = [
+  [1, 0],
+  [0.75, 35.25],
+  [4, 188]
+]
 describe('timeToTopPx', () => {
-  it('Throw error when hour is less than 0', () => {
-    expect(() => timeToTopPx(-1, 47)).toThrow()
+  test.each(basCases)('Throw error when hour is less than or equal to 0', (input: number) => {
+    expect(() => timeToTopPx(input, 47)).toThrow()
   })
 
-  it('Throw error when hour is equal 0', () => {
-    expect(() => timeToTopPx(0, 47)).toThrow()
-  })
-
-  it('Return 0 when hour is equal 1', () => {
-    expect(timeToTopPx(1, 47)).toEqual(0)
-  })
-
-  it('Return the number as desired', () => {
-    expect(timeToTopPx(0.75, 47)).toEqual(35.25)
+  test.each(cases)('Return the number as desired', (input: number, result: number) => {
+    expect(timeToTopPx(input, 47)).toEqual(result)
   })
 })
