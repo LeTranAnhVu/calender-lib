@@ -3,6 +3,7 @@ import './TimeFrame.scss'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import CurrentHourHighlight from '@/layout/components/CalendarDay/CurrentHourHighlight'
 import { TimeContext } from '@/layout/components/TimeContextProvider'
+import TimeFrameOverlay from './TimeFrameOverlay'
 
 const hours = range(0, 23, 1)
 
@@ -34,9 +35,13 @@ const TimeFrame = () => {
   return (
     <div ref={wrapperRef} className="time-frame-wrapper">
       <CurrentHourHighlight top={currentHourTop} />
-      <div className="task">
-        <p>title</p>
-      </div>
+      <TimeFrameOverlay
+        title="Title"
+        content="Meeting in an office"
+        top={50}
+        height={50}
+        lineHeight={24}
+      />
       {hours.map((hour) => (
         <div key={hour} className="time-frame-element">
           <div className="hour">
