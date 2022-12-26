@@ -6,10 +6,19 @@ type TimeFrameOverlayProps = {
   bgColor?: string
   top: number
   height: number
+  lineHeight: number
 }
 
-const TimeFrameOverlay = ({ title, content, bgColor, top, height }: TimeFrameOverlayProps) => {
-  const numberOfLines = Math.round((height - 24) / 24)
+const TimeFrameOverlay = ({
+  title,
+  content,
+  bgColor,
+  top,
+  height,
+  lineHeight
+}: TimeFrameOverlayProps) => {
+  const titleHeight = lineHeight
+  const numberOfLines = Math.round((height - titleHeight) / lineHeight)
 
   return (
     <div

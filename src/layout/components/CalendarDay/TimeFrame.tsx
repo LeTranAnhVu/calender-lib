@@ -18,7 +18,13 @@ const TimeFrame = () => {
 
   return (
     <div ref={wrapperRef} className="time-frame-wrapper">
-      <TimeFrameOverlay title="Title" content="Meeting in an office" top={50} height={50} />
+      <TimeFrameOverlay
+        title="Title"
+        content="Meeting in an office"
+        top={50}
+        height={50}
+        lineHeight={24}
+      />
       {hours.map((hour) => (
         <div key={hour} className="time-frame-element">
           <div className="hour">
