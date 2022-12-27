@@ -1,5 +1,4 @@
 import { range } from '@/lib/array/range'
-import './TimeFrame.scss'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import CurrentHourHighlight from '@/layout/components/CalendarDay/CurrentHourHighlight'
 import { TimeContext } from '@/layout/components/TimeContextProvider'
