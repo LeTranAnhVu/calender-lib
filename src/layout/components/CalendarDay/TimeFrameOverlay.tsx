@@ -1,4 +1,3 @@
-import './TimeFrameOverlay.scss'
 import styled from 'styled-components'
 
 type TimeFrameOverlayProps = {
