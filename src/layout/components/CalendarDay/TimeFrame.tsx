@@ -18,19 +18,17 @@ const plans = [
 const TimeFrame = () => {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [currentHourTop, setCurrentHourTop] = useState(0)
-  const [wrapperHeight, setWrapperHeight] = useState(0)
   const [pxPerHour, setPxPerHour] = useState(0)
   const { currentHour } = useContext(TimeContext)
 
   useEffect(() => {
     const h = wrapperRef.current?.clientHeight ?? 0
-    setWrapperHeight(h)
     setPxPerHour(h / 24)
   }, [wrapperRef.current?.clientHeight])
 
   useEffect(() => {
     setCurrentHourTop(pxPerHour * currentHour)
-  }, [wrapperHeight, pxPerHour])
+  }, [currentHour, pxPerHour])
 
   return (
     <div ref={wrapperRef} className="time-frame-wrapper">
