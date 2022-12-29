@@ -3,6 +3,7 @@ import { getDateIndex, getNumberOfDatesInMonth } from '@/lib/dateTimeApis'
 import './CalendarMonth.scss'
 import { rangeFromOne } from '@/lib/array/range'
 import { DAYS_OF_WEEK } from '@/lib/constants'
+import styled from 'styled-components'
 
 type Props = {
   month: number
@@ -26,21 +27,19 @@ function CalendarMonth({ month, year }: Props) {
   }
 
   return (
-    <div className="calendar-month-wrapper">
-      <div className="calendar-month-header">
+    <Wrapper>
+      <Header>
         {DAYS_OF_WEEK.map((name) => (
-          <div key={name} className="calendar-month-header-day">
-            {name}
-          </div>
+          <HeaderDay key={name}>{name}</HeaderDay>
         ))}
-      </div>
-      <div className="calendar-month">
+      </Header>
+      <Month>
         {dates.map((date) => {
           if (date == 1) {
             return (
-              <div className={`calendar-month-day`} style={firstDateStyle} key={date}>
+              <MonthDay key={date} style={firstDateStyle}>
                 {date}
-              </div>
+              </MonthDay>
             )
           }
 
@@ -49,22 +48,113 @@ function CalendarMonth({ month, year }: Props) {
             month === today.getMonth() + 1 &&
             date === today.getDate()
           ) {
-            return (
-              <div className="calendar-month-day today" key={date}>
-                {date}
-              </div>
-            )
+            return <Today key={date}>{date}</Today>
           }
 
-          return (
-            <div className="calendar-month-day" key={date}>
-              {date}
-            </div>
-          )
+          return <MonthDay key={date}>{date}</MonthDay>
         })}
-      </div>
-    </div>
+      </Month>
+    </Wrapper>
   )
 }
 
 export default CalendarMonth
+
+const Wrapper = styled.div``
+
+const Header = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-row-gap: 10px;
+  grid-column-gap: 2px;
+  text-align: center;
+  margin-bottom: 10px;
+`
+
+const HeaderDay = styled.div``
+
+const Month = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-row-gap: 10px;
+  grid-column-gap: 2px;
+  text-align: center;
+`
+
+const MonthDay = styled.div`
+  min-width: 44px;
+  height: 44px;
+  line-height: 2.9em;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover,
+  &:active {
+    background: #f9f9f9;
+    color: #1a1a1a;
+    font-weight: bolder;
+  }
+`
+
+const Today = styled.div`
+  font-weight: bolder;
+  background: #f54a4a;
+  color: $white;
+
+  min-width: 44px;
+  height: 44px;
+  line-height: 2.9em;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover &:active {
+    background: #f9f9f9;
+    color: #1a1a1a;
+    font-weight: bolder;
+  }
+`
+
+{
+  /* <div className="calendar-month-wrapper">
+<div className="calendar-month-header">
+{DAYS_OF_WEEK.map((name) => (
+  <div key={name} className="calendar-month-header-day">
+    {name}
+  </div>
+))}
+</div>
+<div className="calendar-month">
+{dates.map((date) => {
+  if (date == 1) {
+    return (
+      <div className={`calendar-month-day`} style={firstDateStyle} key={date}>
+        {date}
+      </div>
+    )
+  }
+
+  if (
+    year === today.getFullYear() &&
+    month === today.getMonth() + 1 &&
+    date === today.getDate()
+  ) {
+    return (
+      <div className="calendar-month-day today" key={date}>
+        {date}
+      </div>
+    )
+  }
+
+  return (
+    <div className="calendar-month-day" key={date}>
+      {date}
+    </div>
+  )
+})}
+</div>
+</div> */
+}
