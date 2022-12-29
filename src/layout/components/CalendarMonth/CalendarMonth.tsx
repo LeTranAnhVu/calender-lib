@@ -37,9 +37,9 @@ function CalendarMonth({ month, year }: Props) {
         {dates.map((date) => {
           if (date == 1) {
             return (
-              <MonthDay key={date} style={firstDateStyle}>
+              <DayOfMonth key={date} style={firstDateStyle}>
                 {date}
-              </MonthDay>
+              </DayOfMonth>
             )
           }
 
@@ -51,7 +51,7 @@ function CalendarMonth({ month, year }: Props) {
             return <Today key={date}>{date}</Today>
           }
 
-          return <MonthDay key={date}>{date}</MonthDay>
+          return <DayOfMonth key={date}>{date}</DayOfMonth>
         })}
       </Month>
     </Wrapper>
@@ -83,7 +83,7 @@ const Month = styled.div`
   text-align: center;
 `
 
-const MonthDay = styled.div`
+const DayOfMonth = styled.div`
   min-width: 44px;
   height: 44px;
   line-height: 2.9em;
@@ -111,50 +111,10 @@ const Today = styled.div`
   cursor: pointer;
   user-select: none;
 
-  &:hover &:active {
+  &:hover,
+  &:active {
     background: #f9f9f9;
     color: #1a1a1a;
     font-weight: bolder;
   }
 `
-
-{
-  /* <div className="calendar-month-wrapper">
-<div className="calendar-month-header">
-{DAYS_OF_WEEK.map((name) => (
-  <div key={name} className="calendar-month-header-day">
-    {name}
-  </div>
-))}
-</div>
-<div className="calendar-month">
-{dates.map((date) => {
-  if (date == 1) {
-    return (
-      <div className={`calendar-month-day`} style={firstDateStyle} key={date}>
-        {date}
-      </div>
-    )
-  }
-
-  if (
-    year === today.getFullYear() &&
-    month === today.getMonth() + 1 &&
-    date === today.getDate()
-  ) {
-    return (
-      <div className="calendar-month-day today" key={date}>
-        {date}
-      </div>
-    )
-  }
-
-  return (
-    <div className="calendar-month-day" key={date}>
-      {date}
-    </div>
-  )
-})}
-</div>
-</div> */
-}
