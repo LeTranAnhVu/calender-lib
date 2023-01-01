@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 type Props = {
   date: number
   isToday: boolean
@@ -21,12 +22,12 @@ type StyledDayOfMonthProps = {
 }
 
 const StyledDayOfMonth = styled.div<StyledDayOfMonthProps>`
-  ${({ isToday }) =>
-    isToday &&
+  ${(props) =>
+    props.isToday &&
     `
     font-weight: bolder;
-    background: #f54a4a;
-    color: $white;
+    background: ${props.theme.red};
+    color: ${props.theme.white};
   `}
 
   min-width: 44px;
@@ -38,8 +39,8 @@ const StyledDayOfMonth = styled.div<StyledDayOfMonthProps>`
 
   &:hover,
   &:active {
-    background: #f9f9f9;
-    color: #1a1a1a;
+    background: ${(props) => props.theme.white};
+    color: ${(props) => props.theme.black};
     font-weight: bolder;
   }
 `

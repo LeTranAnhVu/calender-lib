@@ -28,7 +28,7 @@ const HighLight = styled.div<HightLightProp>`
   width: 100%;
   z-index: 100;
   height: 1px;
-  background: #f54a4a;
+  background: ${(props) => props.theme.red};
 `
 
 const Time = styled.span`
@@ -37,7 +37,7 @@ const Time = styled.span`
   top: -50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #242424;
+  background: ${(props) => props.theme.background};
   padding: 0 2px;
 `
 
