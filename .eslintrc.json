@@ -46,6 +46,7 @@
         "prefer": "type-imports",
         "disallowTypeAnnotations": false
       }
-    ]
+    ],
+    "semi": [ 0, "error" ]
   }
 }
