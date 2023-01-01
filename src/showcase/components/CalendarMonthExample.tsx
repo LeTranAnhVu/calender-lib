@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Calendar from '@/layout/components/CalendarMonth/CalendarMonth'
-import './CalendarMonthExample.scss'
+import styled from 'styled-components'
 
 const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 const years = [2019, 2020, 2021, 2022, 2023, 2024]
@@ -25,39 +25,62 @@ function CalendarMonthExample() {
   }
 
   return (
-    <div className="calendar-month-example">
-      <h2 className="h2">
-        <button
+    <MonthExample>
+      <Bar>
+        <Button
           onClick={setToday}
           disabled={today.getMonth() + 1 === month && today.getFullYear() === year}>
           Today
-        </button>
-        <select
+        </Button>
+        <Select
           name="month"
           id="month"
           value={month}
           onChange={({ target: { value } }) => changeMonth(value)}>
           {months.map((m) => (
-            <option key={m} value={m}>
+            <Option key={m} value={m}>
               {m}
-            </option>
+            </Option>
           ))}
-        </select>
-        <select
+        </Select>
+        <Select
           name="year"
           id="year"
           value={year}
           onChange={({ target: { value } }) => changeYear(value)}>
           {years.map((y) => (
-            <option key={y} value={y}>
+            <Option key={y} value={y}>
               {y}
-            </option>
+            </Option>
           ))}
-        </select>
-      </h2>
+        </Select>
+      </Bar>
       <Calendar month={month} year={year} />
-    </div>
+    </MonthExample>
   )
 }
 
 export default CalendarMonthExample
+
+const MonthExample = styled.div`
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+`
+
+const Bar = styled.h2`
+  text-align: right;
+`
+
+const Button = styled.button`
+  font-size: 14px;
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: 2px solid ${(props) => props.theme.primary};
+  &:disabled {
+    border: 2px solid ${(props) => props.theme.disabled};
+  }
+`
+
+const Select = styled.select``
+const Option = styled.option``
