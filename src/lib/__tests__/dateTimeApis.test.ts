@@ -10,6 +10,10 @@ describe('getDateIndex', () => {
   it('Return index 1 as monday on 12/09/2022', () => {
     expect(getDateIndex(2022, 9, 12)).toEqual(1)
   })
+
+  it('Return index 0 as monday on 01/01/2023', () => {
+    expect(getDateIndex(2023, 1, 1)).toEqual(0)
+  })
 })
 
 describe('getNumberOfDatesInMonth', () => {
