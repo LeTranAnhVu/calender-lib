@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { getDateIndex, getNumberOfDatesInMonth } from '@/lib/dateTimeApis'
 import './CalendarMonth.scss'
 import { rangeFromOne } from '@/lib/array/range'
 import { DAYS_OF_WEEK } from '@/lib/constants'
 import styled from 'styled-components'
+import { TimeContext } from '@/layout/components/TimeContextProvider'
+import CalendarMonthDay from '@/layout/components/CalendarMonth/CalendarMonthDay'
 
 type Props = {
   month: number
@@ -13,17 +15,18 @@ type Props = {
 function CalendarMonth({ month, year }: Props) {
   const [dates, setDates] = useState<number[]>([])
   const [firstDateIndex, setFirstDateIndex] = useState(0)
-  const [today] = useState<Date>(new Date())
+  const { now } = useContext(TimeContext)
 
   useEffect(() => {
     const noOfDates = getNumberOfDatesInMonth(year, month)
     const dates = rangeFromOne(noOfDates)
     setDates(dates)
-    setFirstDateIndex(getDateIndex(year, month, 1))
+    const dateIndex = getDateIndex(year, month, 1)
+    setFirstDateIndex(dateIndex === 0 ? 7 : dateIndex)
   }, [month, year])
 
-  const firstDateStyle = {
-    gridColumnStart: firstDateIndex
+  const isToday = (date: number): boolean => {
+    return year === now.getFullYear() && month === now.getMonth() + 1 && date === now.getDate()
   }
 
   return (
@@ -34,25 +37,14 @@ function CalendarMonth({ month, year }: Props) {
         ))}
       </Header>
       <Month>
-        {dates.map((date) => {
-          if (date == 1) {
-            return (
-              <DayOfMonth key={date} style={firstDateStyle}>
-                {date}
-              </DayOfMonth>
-            )
-          }
-
-          if (
-            year === today.getFullYear() &&
-            month === today.getMonth() + 1 &&
-            date === today.getDate()
-          ) {
-            return <Today key={date}>{date}</Today>
-          }
-
-          return <DayOfMonth key={date}>{date}</DayOfMonth>
-        })}
+        {dates.map((date) => (
+          <CalendarMonthDay
+            key={date}
+            date={date}
+            firstDateIndex={firstDateIndex}
+            isToday={isToday(date)}
+          />
+        ))}
       </Month>
     </Wrapper>
   )
@@ -81,40 +73,4 @@ const Month = styled.div`
   grid-row-gap: 10px;
   grid-column-gap: 2px;
   text-align: center;
-`
-
-const DayOfMonth = styled.div`
-  min-width: 44px;
-  height: 44px;
-  line-height: 2.9em;
-  border-radius: 50%;
-  cursor: pointer;
-  user-select: none;
-
-  &:hover,
-  &:active {
-    background: #f9f9f9;
-    color: #1a1a1a;
-    font-weight: bolder;
-  }
-`
-
-const Today = styled.div`
-  font-weight: bolder;
-  background: #f54a4a;
-  color: $white;
-
-  min-width: 44px;
-  height: 44px;
-  line-height: 2.9em;
-  border-radius: 50%;
-  cursor: pointer;
-  user-select: none;
-
-  &:hover,
-  &:active {
-    background: #f9f9f9;
-    color: #1a1a1a;
-    font-weight: bolder;
-  }
 `

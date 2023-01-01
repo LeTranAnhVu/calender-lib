@@ -1,4 +1,5 @@
-import { createContext, ReactComponentElement, useEffect, useState } from 'react'
+import type { ReactComponentElement } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { dateToHour, formatHourColonMinute } from '@/lib/date'
 
 export type ITimeContext = {
