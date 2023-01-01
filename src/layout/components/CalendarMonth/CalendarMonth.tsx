@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
 import { getDateIndex, getNumberOfDatesInMonth } from '@/lib/dateTimeApis'
-import './CalendarMonth.scss'
 import { rangeFromOne } from '@/lib/array/range'
 import { DAYS_OF_WEEK } from '@/lib/constants'
 import styled from 'styled-components'
 import { TimeContext } from '@/layout/components/TimeContextProvider'
-import CalendarMonthDay from '@/layout/components/CalendarMonth/CalendarMonthDay'
+import DayOfMonth from '@/layout/components/CalendarMonth/DayOfMonth'
 
 type Props = {
   month: number
@@ -38,7 +37,7 @@ function CalendarMonth({ month, year }: Props) {
       </Header>
       <Month>
         {dates.map((date) => (
-          <CalendarMonthDay
+          <DayOfMonth
             key={date}
             date={date}
             firstDateIndex={firstDateIndex}
