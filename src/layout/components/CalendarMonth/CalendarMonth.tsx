@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
 import { getDateIndex, getNumberOfDatesInMonth } from '@/lib/dateTimeApis'
-import './CalendarMonth.scss'
 import { rangeFromOne } from '@/lib/array/range'
 import { DAYS_OF_WEEK } from '@/lib/constants'
+import styled from 'styled-components'
 import { TimeContext } from '@/layout/components/TimeContextProvider'
-import CalendarMonthDay from '@/layout/components/CalendarMonth/CalendarMonthDay'
+import DayOfMonth from '@/layout/components/CalendarMonth/DayOfMonth'
 
 type Props = {
   month: number
@@ -29,27 +29,47 @@ function CalendarMonth({ month, year }: Props) {
   }
 
   return (
-    <div className="calendar-month-wrapper">
-      <div className="calendar-month-header">
+    <Wrapper>
+      <Header>
         {DAYS_OF_WEEK.map((name) => (
-          <div key={name} className="calendar-month-header-day">
-            {name}
-          </div>
+          <HeaderDay key={name}>{name}</HeaderDay>
         ))}
-      </div>
-
-      <div className="calendar-month">
+      </Header>
+      <Month>
         {dates.map((date) => (
-          <CalendarMonthDay
+          <DayOfMonth
             key={date}
             date={date}
             firstDateIndex={firstDateIndex}
             isToday={isToday(date)}
           />
         ))}
-      </div>
-    </div>
+      </Month>
+    </Wrapper>
   )
 }
 
 export default CalendarMonth
+
+const Wrapper = styled.div``
+
+const Header = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-row-gap: 10px;
+  grid-column-gap: 2px;
+  text-align: center;
+  margin-bottom: 10px;
+`
+
+const HeaderDay = styled.div``
+
+const Month = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-row-gap: 10px;
+  grid-column-gap: 2px;
+  text-align: center;
+`

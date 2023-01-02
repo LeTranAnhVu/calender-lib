@@ -12,15 +12,5 @@ export default defineConfig({
 
   server: {
     port: 4000
-  },
-
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // example : additionalData: `@import "./src/design/styles/variables";`
-        // dont need include file extend .scss
-        additionalData: `@import "@/themes/theme";`
-      }
-    }
   }
 })
