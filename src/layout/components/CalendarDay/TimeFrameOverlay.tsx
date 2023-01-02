@@ -40,7 +40,7 @@ type WrapperProps = {
 
 const Wrapper = styled.div<WrapperProps>`
   &::before {
-    background-color: ${(props) => props.bgColor || props.theme.bluePrimaryDarker};
+    background-color: ${(props) => props.bgColor || props.theme.blueDarker};
     content: '';
     width: 100%;
     height: 100%;
@@ -53,7 +53,7 @@ const Wrapper = styled.div<WrapperProps>`
   height: ${(props) => props.height}px;
   z-index: 1;
   width: 100%;
-  border-left: solid 3px ${(props) => props.bgColor || props.theme.bluePrimary};
+  border-left: solid 3px ${(props) => props.bgColor || props.theme.blue};
   border-radius: 3px;
   overflow: hidden;
 `
@@ -77,7 +77,7 @@ const Title = styled.div<TitleProps>`
 
   font-size: 0.9em;
   font-weight: 800;
-  color: ${(props) => props.color || props.theme.bluePrimary};
+  color: ${(props) => props.color || props.theme.blue};
 `
 
 type ContentProp = {
