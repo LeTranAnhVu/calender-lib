@@ -3,19 +3,23 @@ import CalendarDayExample from '@/showcase/components/CalendarDayExample'
 import TimeContextProvider from '@/layout/components/TimeContextProvider'
 import styled, { ThemeProvider } from 'styled-components'
 import { defaultTheme } from '@/lib/themes/default'
+import { RootStyles } from '@/lib/themes/root'
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <TimeContextProvider>
-        <AppWrapper>
-          <TitleWrapper>
-            <Title>Calendar Lib Show Case</Title>
-          </TitleWrapper>
-          <Hr />
-          <CalendarMonthExample />
-          <Hr />
-          <CalendarDayExample />
-        </AppWrapper>
+        <>
+          <RootStyles />
+          <AppWrapper>
+            <TitleWrapper>
+              <Title>Calendar Lib Show Case</Title>
+            </TitleWrapper>
+            <Hr />
+            <CalendarMonthExample />
+            <Hr />
+            <CalendarDayExample />
+          </AppWrapper>
+        </>
       </TimeContextProvider>
     </ThemeProvider>
   )
