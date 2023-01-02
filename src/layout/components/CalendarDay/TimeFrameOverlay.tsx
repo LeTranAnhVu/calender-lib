@@ -97,6 +97,6 @@ const Content = styled.div<ContentProp>`
   overflow: hidden;
 
   margin-left: 2px;
-  color: ${(props) => props.color || props.theme.bluePrimary};
+  color: ${(props) => props.color || props.theme.blue};
   font-size: 0.8em;
 `
