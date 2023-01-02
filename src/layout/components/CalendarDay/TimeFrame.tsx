@@ -1,14 +1,16 @@
 import { range } from '@/lib/array/range'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import CurrentHourHighlight from '@/layout/components/CalendarDay/CurrentHourHighlight'
-import { TimeContext } from '@/layout/components/TimeContextProvider'
+import { TimeContext } from '@/layout/components/contexts/TimeContextProvider'
 import TimeFrameOverlay from './TimeFrameOverlay'
 import styled from 'styled-components'
+import { ModalContext } from '@/layout/components/contexts/ModalContextProvider'
 
 const hours = range(0, 23, 1)
 
 const plans = [
   {
+    id: 1,
     title: 'study',
     from: 7,
     to: 9
@@ -20,11 +22,24 @@ const plans = [
   }
 ]
 
+const CreateUserForm = () => {
+  return (
+    <form action="">
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="submit" value="submit" />
+    </form>
+  )
+}
+
 const TimeFrame = () => {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [currentHourTop, setCurrentHourTop] = useState(0)
   const [pxPerHour, setPxPerHour] = useState(0)
   const { currentHour } = useContext(TimeContext)
+  const { show, isShowed, closeModal } = useContext(ModalContext)
 
   useEffect(() => {
     const h = wrapperRef.current?.clientHeight ?? 0
@@ -35,6 +50,19 @@ const TimeFrame = () => {
     setCurrentHourTop(pxPerHour * currentHour)
   }, [currentHour, pxPerHour])
 
+  const handleTaskClicked = (id: number) => {
+    console.log('clicked: ', id)
+    if (isShowed) {
+      closeModal()
+    } else {
+      show({
+        title: 'this is the modal 2S',
+        body: 'That is awesome!',
+        editComponent: CreateUserForm
+      })
+    }
+  }
+
   return (
     <Wrapper ref={wrapperRef}>
       <CurrentHourHighlight top={currentHourTop} />
@@ -44,7 +72,9 @@ const TimeFrame = () => {
         top={100}
         height={200}
         lineHeight={24}
+        onClick={() => handleTaskClicked(99)}
       />
+
       {hours.map((hour) => (
         <Element key={hour}>
           <Hour>

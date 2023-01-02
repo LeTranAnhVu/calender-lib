@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { TimeContext } from '@/layout/components/TimeContextProvider'
+import { TimeContext } from '@/layout/components/contexts/TimeContextProvider'
 import styled from 'styled-components'
 
 type Prop = {

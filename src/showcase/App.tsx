@@ -1,21 +1,24 @@
 import CalendarMonthExample from '@/showcase/components/CalendarMonthExample'
 import CalendarDayExample from '@/showcase/components/CalendarDayExample'
-import TimeContextProvider from '@/layout/components/TimeContextProvider'
 import styled, { ThemeProvider } from 'styled-components'
 import { defaultTheme } from '@/lib/themes/default'
+import ModalContextProvider from '@/layout/components/contexts/ModalContextProvider'
+import TimeContextProvider from '@/layout/components/contexts/TimeContextProvider'
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <TimeContextProvider>
-        <AppWrapper>
-          <TitleWrapper>
-            <Title>Calendar Lib Show Case</Title>
-          </TitleWrapper>
-          <Hr />
-          <CalendarMonthExample />
-          <Hr />
-          <CalendarDayExample />
-        </AppWrapper>
+        <ModalContextProvider>
+          <AppWrapper>
+            <TitleWrapper>
+              <Title>Calendar Lib Show Case</Title>
+            </TitleWrapper>
+            <Hr />
+            <CalendarMonthExample />
+            <Hr />
+            <CalendarDayExample />
+          </AppWrapper>
+        </ModalContextProvider>
       </TimeContextProvider>
     </ThemeProvider>
   )

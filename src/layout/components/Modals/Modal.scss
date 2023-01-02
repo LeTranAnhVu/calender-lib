@@ -1,0 +1,11 @@
+.modal {
+  display: none;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 100vw;
+  background: $white;
+  height: 400px;
+  color: $black;
+  z-index: 999;
+}
