@@ -4,20 +4,24 @@ import styled, { ThemeProvider } from 'styled-components'
 import { defaultTheme } from '@/lib/themes/default'
 import ModalContextProvider from '@/layout/components/contexts/ModalContextProvider'
 import TimeContextProvider from '@/layout/components/contexts/TimeContextProvider'
+import { RootStyles } from '@/lib/themes/root'
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <TimeContextProvider>
         <ModalContextProvider>
-          <AppWrapper>
-            <TitleWrapper>
-              <Title>Calendar Lib Show Case</Title>
-            </TitleWrapper>
-            <Hr />
-            <CalendarMonthExample />
-            <Hr />
-            <CalendarDayExample />
-          </AppWrapper>
+          <>
+            <RootStyles />
+            <AppWrapper>
+              <TitleWrapper>
+                <Title>Calendar Lib Show Case</Title>
+              </TitleWrapper>
+              <Hr />
+              <CalendarMonthExample />
+              <Hr />
+              <CalendarDayExample />
+            </AppWrapper>
+          </>
         </ModalContextProvider>
       </TimeContextProvider>
     </ThemeProvider>
