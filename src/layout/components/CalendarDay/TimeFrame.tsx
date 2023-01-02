@@ -39,7 +39,7 @@ const TimeFrame = () => {
   const [currentHourTop, setCurrentHourTop] = useState(0)
   const [pxPerHour, setPxPerHour] = useState(0)
   const { currentHour } = useContext(TimeContext)
-  const { show, isShowed, closeModal } = useContext(ModalContext)
+  const { showModal, isShowed, closeModal } = useContext(ModalContext)
 
   useEffect(() => {
     const h = wrapperRef.current?.clientHeight ?? 0
@@ -55,7 +55,7 @@ const TimeFrame = () => {
     if (isShowed) {
       closeModal()
     } else {
-      show({
+      showModal({
         title: 'this is the modal 2S',
         body: 'That is awesome!',
         editComponent: CreateUserForm

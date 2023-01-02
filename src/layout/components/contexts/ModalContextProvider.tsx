@@ -1,4 +1,3 @@
-import type { ReactComponentElement } from 'react'
 import { createContext, useState } from 'react'
 import type { WithChildrenProps } from '@/layout/components/contexts/types'
 import type { Nullable } from '@/layout/types'
@@ -10,17 +9,17 @@ export type ModalContent = {
 }
 
 export type IModalContext = {
-  show: (content: ModalContent) => void
-  isShowed: boolean
+  showModal: (content: ModalContent) => void
   closeModal: () => void
+  isShowed: boolean
   content: Nullable<ModalContent>
 }
 
 const initialValue: IModalContext = {
-  show: () => null,
-  isShowed: false,
+  showModal: () => null,
   closeModal: () => null,
-  content: null,
+  isShowed: false,
+  content: null
 }
 
 export const ModalContext = createContext<IModalContext>(initialValue)
@@ -40,7 +39,7 @@ function ModalContextProvider({ children }: Props) {
   }
 
   return (
-    <ModalContext.Provider value={{ show, isShowed, closeModal, content }}>
+    <ModalContext.Provider value={{ showModal: show, isShowed, closeModal, content }}>
       {children}
     </ModalContext.Provider>
   )
