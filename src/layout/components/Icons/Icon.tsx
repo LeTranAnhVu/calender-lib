@@ -19,4 +19,3 @@ const StyledIcon = styled(FontAwesomeIcon)<StyledIconProps>`
     color: ${({ color, theme }) => color || theme.primaryText};
   }
 `
-// TODO: Adding style for icon
