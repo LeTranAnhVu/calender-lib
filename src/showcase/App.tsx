@@ -3,6 +3,10 @@ import CalendarDayExample from '@/showcase/components/CalendarDayExample'
 import TimeContextProvider from '@/layout/components/TimeContextProvider'
 import styled, { ThemeProvider } from 'styled-components'
 import { defaultTheme } from '@/lib/themes/default'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fas)
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
