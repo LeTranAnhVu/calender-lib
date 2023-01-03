@@ -5,6 +5,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import { defaultTheme } from '@/lib/themes/default'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import { Icon } from '@/layout/components/Icons/Icon'
 
 library.add(fas)
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <AppWrapper>
           <TitleWrapper>
             <Title>Calendar Lib Show Case</Title>
+            <Icon icon="star" />
           </TitleWrapper>
           <Hr />
           <CalendarMonthExample />
