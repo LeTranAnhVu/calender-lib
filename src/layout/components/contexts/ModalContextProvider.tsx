@@ -1,45 +1,35 @@
 import { createContext, useState } from 'react'
 import type { WithChildrenProps } from '@/layout/components/contexts/types'
-import type { Nullable } from '@/layout/types'
-
-export type ModalContent = {
-  title: string
-  body: string
-  editComponent: () => JSX.Element
-}
+import type { ModalItem } from '@/layout/components/Modals/Modal'
 
 export type IModalContext = {
-  showModal: (content: ModalContent) => void
-  closeModal: () => void
-  isShowed: boolean
-  content: Nullable<ModalContent>
+  modals: ModalItem[]
+  addModals: (modalItems: ModalItem[]) => void
+  closeModal: (id: string) => void
 }
 
 const initialValue: IModalContext = {
-  showModal: () => null,
-  closeModal: () => null,
-  isShowed: false,
-  content: null
+  modals: [],
+  addModals: () => null,
+  closeModal: () => null
 }
 
 export const ModalContext = createContext<IModalContext>(initialValue)
 
 type Props = WithChildrenProps
 function ModalContextProvider({ children }: Props) {
-  const [isShowed, setIsShowed] = useState(false)
-  const [content, setContent] = useState<Nullable<ModalContent>>(null)
+  const [modals, setModals] = useState<ModalItem[]>([])
 
-  const show = (content: ModalContent) => {
-    setIsShowed(true)
-    setContent(content)
+  const addModals = (modalItems: ModalItem[]) => {
+    setModals((statedModals) => [...statedModals, ...modalItems])
   }
 
-  const closeModal = () => {
-    setIsShowed(false)
+  const closeModal = (id: string) => {
+    setModals((statedModals) => statedModals.filter((m) => m.id != id))
   }
 
   return (
-    <ModalContext.Provider value={{ showModal: show, isShowed, closeModal, content }}>
+    <ModalContext.Provider value={{ modals, addModals, closeModal }}>
       {children}
     </ModalContext.Provider>
   )

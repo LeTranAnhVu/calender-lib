@@ -9,5 +9,6 @@ export const defaultTheme: DefaultTheme = {
   blueDarker: '#323c49',
   primary: '#f54a4a',
   disabled: '$grey',
-  background: '#242424'
+  background: '#242424',
+  modalBackground: '#3e3e3e'
 }

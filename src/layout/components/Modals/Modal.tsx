@@ -1,29 +1,55 @@
+import type { NotificationModalProps } from '@/layout/components/Modals/NotificationModal'
+import NotificationModal from '@/layout/components/Modals/NotificationModal'
+import type { ConfirmModalProps } from '@/layout/components/Modals/ConfirmModal'
+import ConfirmModal from '@/layout/components/Modals/ConfirmModal'
+import type { OperationalModalProps } from './OperationalModal'
+import OperationalModal from './OperationalModal'
 import { useContext } from 'react'
 import { ModalContext } from '@/layout/components/contexts/ModalContextProvider'
-import styled from 'styled-components'
-function Modal() {
-  const { isShowed, content } = useContext(ModalContext)
-  const isDisplay = isShowed ? 'block' : 'none'
-  return (
-    <ModalWrapper style={{ display: isDisplay, top: '100px' }}>
-      <p className="title">{content?.title}</p>
-      <p className="body">{content?.body}</p>
-      <hr />
-      {content?.editComponent()}
-    </ModalWrapper>
-  )
+
+export enum ModalTypes {
+  Notification,
+  Confirmation,
+  Operational
 }
 
-const ModalWrapper = styled.div`
-  display: none;
-  position: fixed;
-  top: 100px;
-  left: 0;
-  width: 100vw;
-  background: ${({ theme }) => theme.white};
-  height: 400px;
-  color: ${({ theme }) => theme.black};
-  z-index: 999;
-`
+type BaseModalItem = {
+  id: string
+}
+
+type NotificationModalItem = BaseModalItem & {
+  type: ModalTypes.Notification
+  props: NotificationModalProps
+}
+
+type OperationalModalItem = BaseModalItem & {
+  type: ModalTypes.Operational
+  props: OperationalModalProps
+}
+
+type ConfirmModalItem = BaseModalItem & {
+  type: ModalTypes.Confirmation
+  props: ConfirmModalProps
+}
+
+export type ModalItem = NotificationModalItem | OperationalModalItem | ConfirmModalItem
+
+function Modal() {
+  const { modals } = useContext(ModalContext)
+
+  return (
+    <div>
+      {modals.map((modal) => {
+        if (modal.type === ModalTypes.Notification) {
+          return <NotificationModal key={modal.id} {...modal.props} />
+        } else if (modal.type === ModalTypes.Confirmation) {
+          return <ConfirmModal key={modal.id} {...modal.props} />
+        } else {
+          return <OperationalModal key={modal.id} {...modal.props} />
+        }
+      })}
+    </div>
+  )
+}
 
 export default Modal
