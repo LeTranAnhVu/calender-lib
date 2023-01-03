@@ -15,7 +15,7 @@ function App() {
         <AppWrapper>
           <TitleWrapper>
             <Title>Calendar Lib Show Case</Title>
-            <Icon icon="star" />
+            <Icon icon="cog" />
           </TitleWrapper>
           <Hr />
           <CalendarMonthExample />
