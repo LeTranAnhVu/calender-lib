@@ -8,7 +8,7 @@ type TimeFrameOverlayProps = {
   top: number
   height: number
   lineHeight: number
-  onClick: (event: MouseEvent<HTMLDivElement>) => unknown
+  onClick?: (event: MouseEvent<HTMLDivElement>) => unknown
 }
 
 const TimeFrameOverlay = ({
@@ -24,7 +24,11 @@ const TimeFrameOverlay = ({
   const numberOfLines = Math.round((height - titleHeight) / lineHeight)
 
   return (
-    <Wrapper top={top} height={height} bgColor={bgColor} onClick={(event) => onClick(event)}>
+    <Wrapper
+      top={top}
+      height={height}
+      bgColor={bgColor}
+      onClick={(event) => onClick && onClick(event)}>
       <Title>{title}</Title>
       <Content numberOfLines={numberOfLines} lineHeight={lineHeight}>
         {content}

@@ -4,7 +4,6 @@ import CurrentHourHighlight from '@/layout/components/CalendarDay/CurrentHourHig
 import { TimeContext } from '@/layout/components/contexts/TimeContextProvider'
 import TimeFrameOverlay from './TimeFrameOverlay'
 import styled from 'styled-components'
-import { ModalContext } from '@/layout/components/contexts/ModalContextProvider'
 
 const hours = range(0, 23, 1)
 
@@ -39,7 +38,6 @@ const TimeFrame = () => {
   const [currentHourTop, setCurrentHourTop] = useState(0)
   const [pxPerHour, setPxPerHour] = useState(0)
   const { currentHour } = useContext(TimeContext)
-  const { showModal, isShowed, closeModal } = useContext(ModalContext)
 
   useEffect(() => {
     const h = wrapperRef.current?.clientHeight ?? 0
@@ -50,19 +48,6 @@ const TimeFrame = () => {
     setCurrentHourTop(pxPerHour * currentHour)
   }, [currentHour, pxPerHour])
 
-  const handleTaskClicked = (id: number) => {
-    console.log('clicked: ', id)
-    if (isShowed) {
-      closeModal()
-    } else {
-      showModal({
-        title: 'this is the modal 2S',
-        body: 'That is awesome!',
-        editComponent: CreateUserForm
-      })
-    }
-  }
-
   return (
     <Wrapper ref={wrapperRef}>
       <CurrentHourHighlight top={currentHourTop} />
@@ -72,7 +57,6 @@ const TimeFrame = () => {
         top={100}
         height={200}
         lineHeight={24}
-        onClick={() => handleTaskClicked(99)}
       />
 
       {hours.map((hour) => (
