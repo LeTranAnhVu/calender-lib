@@ -1,8 +1,8 @@
-import styled, { DefaultTheme } from "styled-components";
+import styled from 'styled-components'
 import devices from '@/layout/mediaQueries/devices'
 import { BaseStyledModal } from '@/layout/components/Modals/BaseStyledModal'
 
-export type OperationalModalProps = {
+export type OperationModalProps = {
   title: string
   onCancel?: () => Promise<unknown>
   onExecute?: () => Promise<unknown>
@@ -12,7 +12,7 @@ export type OperationalModalProps = {
   executeText?: string
 }
 
-function OperationalModal({
+function OperationModal({
   title,
   component,
   onCancel,
@@ -20,27 +20,27 @@ function OperationalModal({
   isShowed,
   cancelText = 'Cancel',
   executeText = 'Save'
-}: OperationalModalProps) {
+}: OperationModalProps) {
   return (
-    <OperationalModalWrapper isShowed={isShowed} headerHeight={44}>
+    <OperationModalWrapper isShowed={isShowed} headerHeight={44}>
       <div className="header">
         <button onClick={onCancel}>{cancelText}</button>
         <span>{title}</span>
         <button onClick={onExecute}>{executeText}</button>
       </div>
       <div className="content">{component()}</div>
-    </OperationalModalWrapper>
+    </OperationModalWrapper>
   )
 }
 
-export default OperationalModal
+export default OperationModal
 
 type ModalWrapperProps = {
   isShowed: boolean
   headerHeight: number
 }
 
-const OperationalModalWrapper = styled(BaseStyledModal)<ModalWrapperProps>`
+const OperationModalWrapper = styled(BaseStyledModal)<ModalWrapperProps>`
   display: ${({ isShowed }) => (isShowed ? 'flex' : 'none')};
   padding-top: ${({ headerHeight }) => headerHeight}px;
 
