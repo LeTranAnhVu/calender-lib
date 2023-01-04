@@ -6,22 +6,26 @@ import { defaultTheme } from '@/lib/themes/default'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { Icon } from '@/layout/components/Icons/Icon'
+import { RootStyles } from '@/lib/themes/root'
 
 library.add(fas)
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <TimeContextProvider>
-        <AppWrapper>
-          <TitleWrapper>
-            <Title>Calendar Lib Show Case</Title>
-            <Icon icon="cog" />
-          </TitleWrapper>
-          <Hr />
-          <CalendarMonthExample />
-          <Hr />
-          <CalendarDayExample />
-        </AppWrapper>
+        <>
+          <RootStyles />
+          <AppWrapper>
+            <TitleWrapper>
+              <Title>Calendar Lib Show Case</Title>
+              <Icon icon="cog" />
+            </TitleWrapper>
+            <Hr />
+            <CalendarMonthExample />
+            <Hr />
+            <CalendarDayExample />
+          </AppWrapper>
+        </>
       </TimeContextProvider>
     </ThemeProvider>
   )

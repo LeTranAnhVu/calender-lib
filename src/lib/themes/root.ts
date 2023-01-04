@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const RootStyles = createGlobalStyle`
-  * {
+  body {
       font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
       font-size: 16px;
       line-height: 24px;
@@ -9,7 +9,7 @@ export const RootStyles = createGlobalStyle`
 
       color-scheme: light dark;
       color: rgba(255, 255, 255, 0.87);
-      background-color: #242424;
+      background-color: ${(props) => props.theme.background};
 
       font-synthesis: none;
       text-rendering: optimizeLegibility;
