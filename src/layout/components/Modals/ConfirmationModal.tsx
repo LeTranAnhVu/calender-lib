@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import devices from '@/layout/mediaQueries/devices'
 import { BaseStyledModal } from '@/layout/components/Modals/BaseStyledModal'
 
-export type ConfirmModalProps = {
+export type ConfirmationModalProps = {
   title: string
   body: string
   onCancel?: () => Promise<unknown>
@@ -10,9 +10,9 @@ export type ConfirmModalProps = {
   isShowed: boolean
 }
 
-function ConfirmModal({ title, body, onConfirm, onCancel, isShowed }: ConfirmModalProps) {
+function ConfirmationModal({ title, body, onConfirm, onCancel, isShowed }: ConfirmationModalProps) {
   return (
-    <ConfirmModalWrapper isShowed={isShowed}>
+    <ConfirmationModalWrapper isShowed={isShowed}>
       <div className="content">
         <p className="title">{title}</p>
         <p className="body">{body}</p>
@@ -21,27 +21,18 @@ function ConfirmModal({ title, body, onConfirm, onCancel, isShowed }: ConfirmMod
         <button onClick={onCancel}>Cancel</button>
         <button onClick={onConfirm}>Confirm</button>
       </div>
-    </ConfirmModalWrapper>
+    </ConfirmationModalWrapper>
   )
 }
 
-export default ConfirmModal
+export default ConfirmationModal
 
-type ConfirmModalWrapperProps = {
+type ConfirmationModalWrapperProps = {
   isShowed: boolean
 }
 
-const ConfirmModalWrapper = styled(BaseStyledModal)<ConfirmModalWrapperProps>`
+const ConfirmationModalWrapper = styled(BaseStyledModal)<ConfirmationModalWrapperProps>`
   display: ${({ isShowed }) => (isShowed ? 'block' : 'none')};
-  // position: fixed;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
-  // background: ${({ theme }) => theme.modalBackground};
-  // box-shadow: 4px 4px 8px ${({ theme }) => theme.black};
-  // width: 90%;
-  // border-radius: 8px;
-  // z-index: 999;
   overflow: hidden;
   .content {
     padding: 20px;

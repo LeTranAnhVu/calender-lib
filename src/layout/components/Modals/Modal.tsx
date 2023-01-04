@@ -1,7 +1,7 @@
 import type { NotificationModalProps } from '@/layout/components/Modals/NotificationModal'
 import NotificationModal from '@/layout/components/Modals/NotificationModal'
-import type { ConfirmModalProps } from '@/layout/components/Modals/ConfirmModal'
-import ConfirmModal from '@/layout/components/Modals/ConfirmModal'
+import type { ConfirmationModalProps } from '@/layout/components/Modals/ConfirmationModal'
+import ConfirmationModal from '@/layout/components/Modals/ConfirmationModal'
 import type { OperationalModalProps } from './OperationalModal'
 import OperationalModal from './OperationalModal'
 import { useContext } from 'react'
@@ -28,12 +28,12 @@ type OperationalModalItem = BaseModalItem & {
   props: OperationalModalProps
 }
 
-type ConfirmModalItem = BaseModalItem & {
+type ConfirmationModalItem = BaseModalItem & {
   type: ModalTypes.Confirmation
-  props: ConfirmModalProps
+  props: ConfirmationModalProps
 }
 
-export type ModalItem = NotificationModalItem | OperationalModalItem | ConfirmModalItem
+export type ModalItem = NotificationModalItem | OperationalModalItem | ConfirmationModalItem
 
 function Modal() {
   const { modals } = useContext(ModalContext)
@@ -49,7 +49,7 @@ function Modal() {
           if (modal.type === ModalTypes.Notification) {
             return <NotificationModal key={modal.id} {...modal.props} />
           } else if (modal.type === ModalTypes.Confirmation) {
-            return <ConfirmModal key={modal.id} {...modal.props} />
+            return <ConfirmationModal key={modal.id} {...modal.props} />
           } else {
             return <OperationalModal key={modal.id} {...modal.props} />
           }
