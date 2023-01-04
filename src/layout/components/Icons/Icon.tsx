@@ -6,9 +6,7 @@ type Props = {
   color?: string
 }
 
-export const Icon = ({ icon, color }: Props) => (
-  <StyledIcon icon={icon} color={color} className="icon" />
-)
+export const Icon = ({ icon, color }: Props) => <StyledIcon icon={icon} color={color} />
 
 type StyledIconProps = {
   color?: string
@@ -16,6 +14,17 @@ type StyledIconProps = {
 
 const StyledIcon = styled(FontAwesomeIcon)<StyledIconProps>`
   > path {
-    color: ${({ color, theme }) => color || theme.primaryText};
+    color: ${({ color, theme }) =>
+      color === 'primary'
+        ? theme.primary
+        : color === 'success'
+        ? theme.success
+        : color === 'danger'
+        ? theme.danger
+        : color === 'warning'
+        ? theme.warning
+        : color === 'info'
+        ? theme.info
+        : theme.primaryText};
   }
 `

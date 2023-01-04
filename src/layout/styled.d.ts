@@ -10,6 +10,10 @@ declare module 'styled-components' {
     blue: string
     blueDarker: string
     primary: string
+    success: string
+    danger: string
+    warning: string
+    info: string
     disabled: string
     background: string
     primaryText: string
