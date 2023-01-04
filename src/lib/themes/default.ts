@@ -7,7 +7,9 @@ export const defaultTheme: DefaultTheme = {
   red: '#f54a4a',
   blue: '#2d92bd',
   blueDarker: '#323c49',
-  primary: '#f54a4a',
+  primary: '#2d92bd',
   disabled: '$grey',
-  background: '#242424'
+  background: '#242424',
+  secondary: '#6c757d',
+  danger: '#dc3545'
 }

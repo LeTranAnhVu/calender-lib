@@ -4,6 +4,7 @@ import TimeContextProvider from '@/layout/components/TimeContextProvider'
 import styled, { ThemeProvider } from 'styled-components'
 import { defaultTheme } from '@/lib/themes/default'
 import { RootStyles } from '@/lib/themes/root'
+import ButtonExample from './components/ButtonExample'
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -14,6 +15,7 @@ function App() {
             <TitleWrapper>
               <Title>Calendar Lib Show Case</Title>
             </TitleWrapper>
+            <ButtonExample />
             <Hr />
             <CalendarMonthExample />
             <Hr />
