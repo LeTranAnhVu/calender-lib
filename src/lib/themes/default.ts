@@ -10,6 +10,8 @@ export const defaultTheme: DefaultTheme = {
   primary: '#f54a4a',
   disabled: '$grey',
   background: '#242424',
+  secondaryBackground: '#262626',
   modalBackground: '#3e3e3e',
+  overlayBackground: '#8c8c8c3d',
   borderRadius: '8px'
 }
