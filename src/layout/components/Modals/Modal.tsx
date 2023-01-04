@@ -71,3 +71,4 @@ const ModalWrapper = styled.div`
   justify-content: center;
   background: #8c8c8c3d;
 `
+

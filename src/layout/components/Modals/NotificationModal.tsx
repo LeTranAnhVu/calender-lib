@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import devices from "@/layout/mediaQueries/devices";
+import devices from '@/layout/mediaQueries/devices'
+import { BaseStyledModal } from '@/layout/components/Modals/BaseStyledModal'
 
 export type NotificationModalProps = {
   title: string
@@ -28,18 +29,8 @@ type NotificationModalWrapperProps = {
   isShowed: boolean
 }
 
-const NotificationModalWrapper = styled.div<NotificationModalWrapperProps>`
+const NotificationModalWrapper = styled(BaseStyledModal)<NotificationModalWrapperProps>`
   display: ${({ isShowed }) => (isShowed ? 'block' : 'none')};
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: ${({ theme }) => theme.modalBackground};
-  box-shadow: 4px 4px 8px ${({ theme }) => theme.black};
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  z-index: 999;
   .content {
     padding: 20px;
     .title {

@@ -5,11 +5,13 @@ import type { ModalItem } from '@/layout/components/Modals/Modal'
 export type IModalContext = {
   modals: ModalItem[]
   addModals: (modalItems: ModalItem[]) => void
+  addModal: (modalItems: ModalItem) => void
   closeModal: (id: string) => void
 }
 
 const initialValue: IModalContext = {
   modals: [],
+  addModal: () => null,
   addModals: () => null,
   closeModal: () => null
 }
@@ -24,12 +26,16 @@ function ModalContextProvider({ children }: Props) {
     setModals((statedModals) => [...statedModals, ...modalItems])
   }
 
+  const addModal = (modalItems: ModalItem) => {
+    setModals((statedModals) => [...statedModals, modalItems])
+  }
+
   const closeModal = (id: string) => {
     setModals((statedModals) => statedModals.filter((m) => m.id != id))
   }
 
   return (
-    <ModalContext.Provider value={{ modals, addModals, closeModal }}>
+    <ModalContext.Provider value={{ modals, addModal, addModals, closeModal }}>
       {children}
     </ModalContext.Provider>
   )

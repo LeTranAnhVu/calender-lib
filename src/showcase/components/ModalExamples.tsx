@@ -1,82 +1,41 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import type { ModalItem } from '@/layout/components/Modals/Modal'
 import { ModalTypes } from '@/layout/components/Modals/Modal'
 import { v4 as uuidv4 } from 'uuid'
 import { ModalContext } from '@/layout/components/contexts/ModalContextProvider'
+import { rangeFromOne } from '@/lib/array/range'
 
-const ShortCreateUserForm = () => {
+const CreateExampleForm = (n: number) => {
   return (
-    <form action="">
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="name" />
-      <input type="submit" value="submit" />
-    </form>
+    <div style={{ width: '100%' }}>
+      {rangeFromOne(n).map((i) => (
+        <p key={i}>{i}</p>
+      ))}
+    </div>
   )
 }
 
-const modalIds = [uuidv4(), uuidv4(), uuidv4()]
+const LongForm = () => CreateExampleForm(50)
+const ShortForm = () => CreateExampleForm(10)
+
+const enum ExampleModalType {
+  Confirmation,
+  Notification,
+  ShortForm,
+  LongForm
+}
+
+const modalIds = [uuidv4(), uuidv4(), uuidv4(), uuidv4()]
 
 function ModalExamples() {
-  const { closeModal, addModals } = useContext(ModalContext)
+  const { closeModal, addModal } = useContext(ModalContext)
   const modals: ModalItem[] = [
     {
       id: modalIds[0],
       type: ModalTypes.Operational,
       props: {
         isShowed: true,
-        title: 'Operational title',
+        title: 'Long form title',
         onCancel: async () => {
           console.log('operational canceled')
           closeModal(modalIds[0])
@@ -87,11 +46,30 @@ function ModalExamples() {
           closeModal(modalIds[0])
           await Promise.resolve()
         },
-        component: ShortCreateUserForm
+        component: LongForm
       }
     },
     {
       id: modalIds[1],
+      type: ModalTypes.Operational,
+      props: {
+        isShowed: true,
+        title: 'Short form title',
+        onCancel: async () => {
+          console.log('operational canceled')
+          closeModal(modalIds[1])
+          await Promise.resolve()
+        },
+        onExecute: async () => {
+          console.log('operational executed')
+          closeModal(modalIds[1])
+          await Promise.resolve()
+        },
+        component: ShortForm
+      }
+    },
+    {
+      id: modalIds[2],
       type: ModalTypes.Notification,
       props: {
         isShowed: true,
@@ -99,13 +77,13 @@ function ModalExamples() {
         body: 'this is the body of notification',
         onClose: async () => {
           console.log('notification modal closed')
-          closeModal(modalIds[1])
+          closeModal(modalIds[2])
           await Promise.resolve()
         }
       }
     },
     {
-      id: modalIds[2],
+      id: modalIds[3],
       type: ModalTypes.Confirmation,
       props: {
         isShowed: true,
@@ -113,49 +91,45 @@ function ModalExamples() {
         body: 'this is the content of confirm. Do you want to save it?',
         onConfirm: async () => {
           console.log('Confirmation modal confirmed')
-          closeModal(modalIds[2])
+          closeModal(modalIds[3])
           await Promise.resolve()
         },
         onCancel: async () => {
           console.log('Confirmation modal cancel')
-          closeModal(modalIds[2])
+          closeModal(modalIds[3])
           await Promise.resolve()
         }
       }
     }
   ]
 
-  useEffect(() => {
-    const modal: ModalItem = {
-      id: '23434',
-      type: ModalTypes.Operational,
-      props: {
-        isShowed: true,
-        title: 'Operational title',
-        onCancel: async () => {
-          console.log('operational canceled')
-          closeModal('23434')
-          await Promise.resolve()
-        },
-        onExecute: async () => {
-          console.log('operational executed')
-          closeModal('23434')
-          await Promise.resolve()
-        },
-        component: ShortCreateUserForm
-      }
+  const showModals = (type: ExampleModalType) => {
+    switch (type) {
+      case ExampleModalType.LongForm:
+        addModal(modals[0])
+        break
+      case ExampleModalType.ShortForm:
+        addModal(modals[1])
+        break
+
+      case ExampleModalType.Notification:
+        addModal(modals[2])
+        break
+
+      case ExampleModalType.Confirmation:
+        addModal(modals[3])
+        break
     }
-
-    addModals([modal])
-  }, [])
-
-  const showModals = () => {
-    addModals([...modals])
   }
 
   return (
     <div>
-      <button onClick={showModals}>Show confirm modal</button>
+      <button onClick={() => showModals(ExampleModalType.Confirmation)}>Show confirm modal</button>
+      <button onClick={() => showModals(ExampleModalType.Notification)}>
+        Show notification modal
+      </button>
+      <button onClick={() => showModals(ExampleModalType.ShortForm)}>Show short form modal</button>
+      <button onClick={() => showModals(ExampleModalType.LongForm)}>Show long form modal</button>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import devices from '@/layout/mediaQueries/devices'
+import { BaseStyledModal } from '@/layout/components/Modals/BaseStyledModal'
 
 export type ConfirmModalProps = {
   title: string
@@ -30,18 +31,18 @@ type ConfirmModalWrapperProps = {
   isShowed: boolean
 }
 
-const ConfirmModalWrapper = styled.div<ConfirmModalWrapperProps>`
+const ConfirmModalWrapper = styled(BaseStyledModal)<ConfirmModalWrapperProps>`
   display: ${({ isShowed }) => (isShowed ? 'block' : 'none')};
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: ${({ theme }) => theme.modalBackground};
-  box-shadow: 4px 4px 8px ${({ theme }) => theme.black};
-  width: 100%;
-  border-radius: 8px;
+  // position: fixed;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  // background: ${({ theme }) => theme.modalBackground};
+  // box-shadow: 4px 4px 8px ${({ theme }) => theme.black};
+  // width: 90%;
+  // border-radius: 8px;
+  // z-index: 999;
   overflow: hidden;
-  z-index: 999;
   .content {
     padding: 20px;
     .title {
