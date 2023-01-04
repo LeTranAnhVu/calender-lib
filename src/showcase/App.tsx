@@ -6,6 +6,7 @@ import { defaultTheme } from '@/lib/themes/default'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { RootStyles } from '@/lib/themes/root'
+import IconExample from './components/IconExample'
 
 library.add(fas)
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <TitleWrapper>
               <Title>Calendar Lib Show Case</Title>
             </TitleWrapper>
+            <IconExample />
             <Hr />
             <CalendarMonthExample />
             <Hr />
