@@ -1,6 +1,6 @@
-import type { ReactComponentElement } from 'react'
 import { createContext, useEffect, useState } from 'react'
 import { dateToHour, formatHourColonMinute } from '@/lib/date'
+import type { WithChildrenProps } from '@/layout/components/contexts/types'
 
 export type ITimeContext = {
   now: Date
@@ -16,9 +16,8 @@ const initialValue: ITimeContext = {
 
 export const TimeContext = createContext<ITimeContext>(initialValue)
 
-type Props = {
-  children: ReactComponentElement<any>
-}
+type Props = WithChildrenProps
+
 function TimeContextProvider({ children }: Props) {
   const [currentHour, setCurrentHour] = useState(0)
   const [currentHourColonMinute, setCurrentHourColonMinute] = useState('00:00')
