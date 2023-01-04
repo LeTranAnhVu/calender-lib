@@ -4,6 +4,7 @@ import { ModalTypes } from '@/layout/components/Modals/Modal'
 import { v4 as uuidv4 } from 'uuid'
 import { ModalContext } from '@/layout/components/contexts/ModalContextProvider'
 import { rangeFromOne } from '@/lib/array/range'
+import Panel from '@/layout/components/Panel'
 
 const CreateExampleForm = (n: number) => {
   return (
@@ -123,14 +124,14 @@ function ModalExamples() {
   }
 
   return (
-    <div>
+    <Panel>
       <button onClick={() => showModals(ExampleModalType.Confirmation)}>Show confirm modal</button>
       <button onClick={() => showModals(ExampleModalType.Notification)}>
         Show notification modal
       </button>
       <button onClick={() => showModals(ExampleModalType.ShortForm)}>Show short form modal</button>
       <button onClick={() => showModals(ExampleModalType.LongForm)}>Show long form modal</button>
-    </div>
+    </Panel>
   )
 }
 
