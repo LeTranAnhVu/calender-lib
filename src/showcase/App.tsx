@@ -5,6 +5,7 @@ import { defaultTheme } from '@/lib/themes/default'
 import ModalContextProvider from '@/layout/components/contexts/ModalContextProvider'
 import TimeContextProvider from '@/layout/components/contexts/TimeContextProvider'
 import { RootStyles } from '@/lib/themes/root'
+import { Normalize } from 'styled-normalize'
 import ModalExamples from './components/ModalExamples'
 import Modal from '@/layout/components/Modals/Modal'
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <ModalContextProvider>
           <>
             <RootStyles />
+            <Normalize />
             <AppWrapper>
               <Modal />
               <TitleWrapper>

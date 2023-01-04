@@ -3,7 +3,12 @@ import { createGlobalStyle } from 'styled-components'
 export const RootStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
+    // Use to normalize the button in ios devices
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
+  
   body {
     font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
     font-size: 16px;
