@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import devices from "@/layout/mediaQueries/devices";
 
 export type NotificationModalProps = {
   title: string
@@ -58,5 +59,9 @@ const NotificationModalWrapper = styled.div<NotificationModalWrapperProps>`
       border: none;
       padding: 10px;
     }
+  }
+
+  @media ${devices.tablet} {
+    max-width: 450px;
   }
 `

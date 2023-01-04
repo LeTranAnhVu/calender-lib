@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import type { ModalItem } from '@/layout/components/Modals/Modal'
 import { ModalTypes } from '@/layout/components/Modals/Modal'
 import { v4 as uuidv4 } from 'uuid'
@@ -7,6 +7,59 @@ import { ModalContext } from '@/layout/components/contexts/ModalContextProvider'
 const ShortCreateUserForm = () => {
   return (
     <form action="">
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
+      <input type="text" placeholder="name" />
       <input type="text" placeholder="name" />
       <input type="submit" value="submit" />
     </form>
@@ -71,6 +124,30 @@ function ModalExamples() {
       }
     }
   ]
+
+  useEffect(() => {
+    const modal: ModalItem = {
+      id: '23434',
+      type: ModalTypes.Operational,
+      props: {
+        isShowed: true,
+        title: 'Operational title',
+        onCancel: async () => {
+          console.log('operational canceled')
+          closeModal('23434')
+          await Promise.resolve()
+        },
+        onExecute: async () => {
+          console.log('operational executed')
+          closeModal('23434')
+          await Promise.resolve()
+        },
+        component: ShortCreateUserForm
+      }
+    }
+
+    addModals([modal])
+  }, [])
 
   const showModals = () => {
     addModals([...modals])

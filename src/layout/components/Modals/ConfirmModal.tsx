@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import devices from '@/layout/mediaQueries/devices'
 
 export type ConfirmModalProps = {
   title: string
@@ -64,5 +65,9 @@ const ConfirmModalWrapper = styled.div<ConfirmModalWrapperProps>`
     button:first-of-type {
       border-right: 2px solid ${({ theme }) => theme.grey};
     }
+  }
+
+  @media ${devices.tablet} {
+    max-width: 400px;
   }
 `
