@@ -1,30 +1,32 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import styled from 'styled-components'
+
+type IconType = 'primary' | 'success' | 'danger' | 'warning' | 'info'
 type Props = {
   icon: IconProp
-  color?: string
+  type?: IconType
 }
 
-export const Icon = ({ icon, color }: Props) => <StyledIcon icon={icon} color={color} />
+export const Icon = ({ icon, type }: Props) => <StyledIcon icon={icon} type={type} />
 
 type StyledIconProps = {
-  color?: string
+  type?: IconType
 }
 
 const StyledIcon = styled(FontAwesomeIcon)<StyledIconProps>`
   > path {
-    color: ${({ color, theme }) =>
-      color === 'primary'
+    color: ${({ type, theme }) =>
+      type === 'primary'
         ? theme.primary
-        : color === 'success'
+        : type === 'success'
         ? theme.success
-        : color === 'danger'
+        : type === 'danger'
         ? theme.danger
-        : color === 'warning'
+        : type === 'warning'
         ? theme.warning
-        : color === 'info'
+        : type === 'info'
         ? theme.info
-        : theme.primaryText}; // * Default color is theme.primaryText
+        : theme.primaryText}; // * Default type is theme.primaryText
   }
 `
