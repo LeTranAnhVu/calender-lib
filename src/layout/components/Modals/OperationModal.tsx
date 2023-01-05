@@ -24,9 +24,13 @@ function OperationModal({
   return (
     <OperationModalWrapper isShowed={isShowed} headerHeight={44}>
       <div className="header">
-        <button onClick={onCancel}>{cancelText}</button>
+        <button className="cancel-btn" onClick={onCancel}>
+          {cancelText}
+        </button>
         <span>{title}</span>
-        <button onClick={onExecute}>{executeText}</button>
+        <button className="execute-btn" onClick={onExecute}>
+          {executeText}
+        </button>
       </div>
       <div className="content">{component()}</div>
     </OperationModalWrapper>
@@ -46,7 +50,6 @@ const OperationModalWrapper = styled(BaseStyledModal)<ModalWrapperProps>`
 
   .header {
     border-radius: ${({ theme }) => theme.borderRadius}px ${({ theme }) => theme.borderRadius}px 0 0;
-
     top: 0;
     left: 0;
     position: absolute;
@@ -59,6 +62,20 @@ const OperationModalWrapper = styled(BaseStyledModal)<ModalWrapperProps>`
     padding: 10px 20px;
     height: ${({ headerHeight }) => headerHeight}px;
     box-shadow: 1px 0 2px ${({ theme }) => theme.black};
+
+    button {
+      border: none;
+      background: transparent;
+
+      &.cancel-btn {
+        color: ${({ theme }) => theme.red};
+      }
+
+      &.execute-btn {
+        color: ${({ theme }) => theme.primary};
+        font-weight: bold;
+      }
+    }
   }
   .content {
     padding: 0 20px;

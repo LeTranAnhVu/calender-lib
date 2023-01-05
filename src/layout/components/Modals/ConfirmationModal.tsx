@@ -52,6 +52,7 @@ const ConfirmationModalWrapper = styled(BaseStyledModal)<ConfirmationModalWrappe
       flex-grow: 1;
       border: none;
       padding: 10px;
+      background: 2px solid ${({ theme }) => theme.grey};
     }
 
     button:first-of-type {

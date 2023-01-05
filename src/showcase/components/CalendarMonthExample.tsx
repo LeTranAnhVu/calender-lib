@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Calendar from '@/layout/components/CalendarMonth/CalendarMonth'
 import styled from 'styled-components'
+import Panel from "@/layout/components/Panel";
 
 const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 const years = [2019, 2020, 2021, 2022, 2023, 2024]
@@ -66,6 +67,7 @@ const MonthExample = styled.div`
   width: 100%;
   max-width: 400px;
   margin: auto;
+  padding: 0;
 `
 
 const Bar = styled.h2`

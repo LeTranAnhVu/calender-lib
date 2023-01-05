@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import devices from '@/layout/mediaQueries/devices'
 
 type Props = {
   date: number
@@ -30,9 +31,9 @@ const StyledDayOfMonth = styled.div<StyledDayOfMonthProps>`
     color: ${props.theme.white};
   `}
 
-  min-width: 44px;
-  height: 44px;
-  line-height: 2.9em;
+  width: 40px;
+  height: 40px;
+  line-height: 2.5em;
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
@@ -42,5 +43,11 @@ const StyledDayOfMonth = styled.div<StyledDayOfMonthProps>`
     background: ${(props) => props.theme.white};
     color: ${(props) => props.theme.black};
     font-weight: bolder;
+  }
+
+  @media ${devices.tablet} {
+    width: 44px;
+    height: 44px;
+    line-height: 2.9em;
   }
 `

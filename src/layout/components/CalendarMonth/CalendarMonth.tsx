@@ -5,6 +5,7 @@ import { DAYS_OF_WEEK } from '@/lib/constants'
 import styled from 'styled-components'
 import DayOfMonth from '@/layout/components/CalendarMonth/DayOfMonth'
 import { TimeContext } from '@/layout/components/contexts/TimeContextProvider'
+import Panel from "@/layout/components/Panel";
 
 type Props = {
   month: number
@@ -51,7 +52,7 @@ function CalendarMonth({ month, year }: Props) {
 
 export default CalendarMonth
 
-const Wrapper = styled.div``
+const Wrapper = styled(Panel)``
 
 const Header = styled.div`
   width: 100%;
