@@ -1,4 +1,4 @@
-import { VerticalItem, VerticalList } from '@/layout/components/VertialList/VerticalList'
+import { VerticalItem, VerticalList } from '@/layout/components/VerticalList'
 import { rangeFromOne } from '@/lib/array/range'
 import styled from 'styled-components'
 
@@ -9,6 +9,7 @@ function createItems() {
 function VerticalListExample() {
   return (
     <Wrapper>
+      <h5>Vertical list</h5>
       <VerticalList style={{ maxHeight: '400px', maxWidth: '400px', width: '100%' }}>
         {createItems().map((item) => (
           <VerticalItem key={item.text}>{item.text}</VerticalItem>
@@ -24,4 +25,5 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
+  flex-direction: column;
 `
