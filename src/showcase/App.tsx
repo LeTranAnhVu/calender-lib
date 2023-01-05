@@ -2,12 +2,18 @@ import CalendarMonthExample from '@/showcase/components/CalendarMonthExample'
 import CalendarDayExample from '@/showcase/components/CalendarDayExample'
 import styled, { ThemeProvider } from 'styled-components'
 import { defaultTheme } from '@/lib/themes/default'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { RootStyles } from '@/lib/themes/root'
+import IconExample from './components/IconExample'
+
 import ModalContextProvider from '@/layout/components/contexts/ModalContextProvider'
 import TimeContextProvider from '@/layout/components/contexts/TimeContextProvider'
-import { RootStyles } from '@/lib/themes/root'
 import { Normalize } from 'styled-normalize'
 import ModalExamples from './components/ModalExamples'
 import Modal from '@/layout/components/Modals/Modal'
+library.add(fas)
+
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -21,11 +27,12 @@ function App() {
               <TitleWrapper>
                 <Title>Calendar Lib Show Case</Title>
               </TitleWrapper>
-              <hr />
+              <IconExample />
+              <Hr />
               <CalendarMonthExample />
-              <hr />
+              <Hr />
               <CalendarDayExample />
-              <hr />
+              <Hr />
               <ModalExamples />
             </AppWrapper>
           </>
