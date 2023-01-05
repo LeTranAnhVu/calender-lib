@@ -1,6 +1,6 @@
 import { VerticalItem, VerticalList } from '@/layout/components/VertialList/VerticalList'
 import { rangeFromOne } from '@/lib/array/range'
-import styled from "styled-components";
+import styled from 'styled-components'
 
 function createItems() {
   return rangeFromOne(100).map((i) => ({ text: 'this is item no: ' + i }))
