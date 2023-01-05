@@ -17,7 +17,7 @@ export const defaultTheme: DefaultTheme = {
   red,
   blue,
   blueDarker: blueDarker,
-  primary: blue,
+  primary: red,
   success: green,
   danger: red,
   info: lightBlue,

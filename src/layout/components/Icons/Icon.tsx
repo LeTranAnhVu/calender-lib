@@ -25,6 +25,6 @@ const StyledIcon = styled(FontAwesomeIcon)<StyledIconProps>`
         ? theme.warning
         : color === 'info'
         ? theme.info
-        : theme.primaryText};
+        : theme.primaryText}; // * Default color is theme.primaryText
   }
 `

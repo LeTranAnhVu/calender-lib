@@ -18,10 +18,7 @@ export const RootStyles = createGlobalStyle`
       -webkit-text-size-adjust: 100%;
       box-sizing: border-box;
       padding: 0;
-      margin: 0;
-
-
-      
+      margin: 0;  
   }
 
   h1 {
