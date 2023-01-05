@@ -13,6 +13,7 @@ import { Normalize } from 'styled-normalize'
 import ModalExamples from './components/ModalExamples'
 import Modal from '@/layout/components/Modals/Modal'
 import VerticalListExample from '@/showcase/components/VerticalListExample'
+import HorizontalListExample from '@/showcase/components/HorizontalListExample'
 library.add(fas)
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
               </TitleWrapper>
               <Hr />
               <IconExample />
+              <Hr />
+              <HorizontalListExample />
               <Hr />
               <VerticalListExample />
               <Hr />
