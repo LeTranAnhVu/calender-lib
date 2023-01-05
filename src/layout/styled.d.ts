@@ -14,5 +14,7 @@ declare module 'styled-components' {
     background: string
     secondary: string
     danger: string
+    modalBackground: string
+    borderRadius: string
   }
 }

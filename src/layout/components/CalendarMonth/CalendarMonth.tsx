@@ -3,8 +3,8 @@ import { getDateIndex, getNumberOfDatesInMonth } from '@/lib/dateTimeApis'
 import { rangeFromOne } from '@/lib/array/range'
 import { DAYS_OF_WEEK } from '@/lib/constants'
 import styled from 'styled-components'
-import { TimeContext } from '@/layout/components/TimeContextProvider'
 import DayOfMonth from '@/layout/components/CalendarMonth/DayOfMonth'
+import { TimeContext } from '@/layout/components/contexts/TimeContextProvider'
 
 type Props = {
   month: number

@@ -11,5 +11,7 @@ export const defaultTheme: DefaultTheme = {
   disabled: '$grey',
   background: '#242424',
   secondary: '#6c757d',
-  danger: '#dc3545'
+  danger: '#dc3545',
+  modalBackground: '#3e3e3e',
+  borderRadius: '8px'
 }
