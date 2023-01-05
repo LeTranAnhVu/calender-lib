@@ -12,6 +12,7 @@ import TimeContextProvider from '@/layout/components/contexts/TimeContextProvide
 import { Normalize } from 'styled-normalize'
 import ModalExamples from './components/ModalExamples'
 import Modal from '@/layout/components/Modals/Modal'
+import VerticalListExample from '@/showcase/components/VerticalListExample'
 library.add(fas)
 
 function App() {
@@ -27,7 +28,10 @@ function App() {
               <TitleWrapper>
                 <Title>Calendar Lib Show Case</Title>
               </TitleWrapper>
+              <Hr />
               <IconExample />
+              <Hr />
+              <VerticalListExample />
               <Hr />
               <CalendarMonthExample />
               <Hr />
