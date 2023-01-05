@@ -1,65 +1,69 @@
 import styled from 'styled-components'
 
-export enum Size {
-  small,
-  medium,
-  large
-}
+type ButtonSize = 'small' | 'medium' | 'large'
 
-export enum BgColor {
-  primary,
-  secondary,
-  disabled,
-  error
-}
+type ButtonBgColor = 'primary' | 'secondary' | 'disabled' | 'error'
 
-type ButtonPatternProps = {
-  bgColor?: BgColor | undefined
+type ButtonProps = {
+  bgColor?: ButtonBgColor
   text: string
-  size?: Size | undefined
+  size?: ButtonSize
 }
 
 /**
- * @param text (require) content of the button
- * @param bgColor (optional, value: number) default: white. There are 4 pattern colors: primary is 0, secondary is 1, disabled is 2 and error is 3.
- * @param size (value: number) default: small. There are 3 pattern sizes: small is 0, medium is 1 and large is 2.
+ * @param text (require) content of the button.
+ * @param bgColor (optional) default color is white.
+ * @param size (optional) default size is small.
 /** */
-const ButtonPattern = ({ bgColor, text, size = 0 }: ButtonPatternProps) => {
-  const handleClick = () => {
-    console.log('clicked')
-  }
-
+const Button = ({ bgColor, text, size = 'small' }: ButtonProps) => {
   return (
-    <Button bgColor={bgColor} size={size} onClick={handleClick}>
+    <Wrapper bgColor={bgColor} size={size}>
       {text}
-    </Button>
+    </Wrapper>
   )
 }
 
-export default ButtonPattern
+export default Button
 
-type ButtonProps = {
-  bgColor?: BgColor | undefined
-  size: Size
+type WrapperProps = {
+  bgColor?: ButtonBgColor
+  size: ButtonSize
 }
 
-const Button = styled.button<ButtonProps>`
-  width: max-content;
+const Wrapper = styled.button<WrapperProps>`
+  width: ${({ size }) => (size === 'small' ? '100px' : size === 'medium' ? '150px' : '200px')};
+  padding: ${({ size }) => (size === 'small' ? '0.4em' : '0.5em')};
   border: none;
-  border-radius: ${({ size }) => (size === 0 ? '0.3em' : '0.5em')};
-  padding: ${({ size }) => (size === 0 ? '0.5em 1em' : '0.75em 1.25em')};
+  border-radius: 0.3em;
   background-color: ${({ bgColor, theme }) =>
-    bgColor === 0
+    bgColor === 'primary'
       ? theme.primary
-      : bgColor === 1
+      : bgColor === 'secondary'
       ? theme.secondary
-      : bgColor === 2
+      : bgColor === 'disabled'
       ? theme.disabled
-      : bgColor === 3
+      : bgColor === 'error'
       ? theme.danger
-      : theme.white};
+      : theme.white}; // Default color is white
+
   color: ${({ bgColor, theme }) =>
-    bgColor === 0 || bgColor === 1 || bgColor === 2 ? theme.white : theme.black};
-  font-size: ${({ size }) => (size === 0 ? '1em' : size === 1 ? '1.25em' : '1.5em')};
-  pointer-events: ${({ bgColor }) => (bgColor === 2 ? 'none' : null)};
+    bgColor === 'primary' || bgColor === 'error' || bgColor === 'secondary'
+      ? theme.white
+      : bgColor === 'disabled'
+      ? theme.grey
+      : theme.black};
+  font-size: ${({ size }) => (size === 'small' ? '1em' : size === 'medium' ? '1.25em' : '1.5em')};
+  font-weight: 500;
+
+  pointer-events: ${({ bgColor }) => (bgColor === 'disabled' ? 'none' : null)};
+  user-select: none;
+
+  // the button will be truncated if overscale
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  :active {
+    filter: brightness(85%);
+  }
 `
