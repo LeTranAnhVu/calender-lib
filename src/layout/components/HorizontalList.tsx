@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const HorizontalList = styled.div`
-  //width: 100%;
   overflow: auto;
   display: flex;
   flex-direction: row;
