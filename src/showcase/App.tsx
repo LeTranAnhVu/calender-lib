@@ -12,6 +12,7 @@ import ButtonExample from './components/ButtonExample'
 import { Normalize } from 'styled-normalize'
 import ModalExamples from './components/ModalExamples'
 import Modal from '@/layout/components/Modals/Modal'
+import OutlineButtonExample from './components/OutlineButtonExample'
 
 library.add(fas)
 
@@ -28,7 +29,10 @@ function App() {
               <TitleWrapper>
                 <Title>Calendar Lib Show Case</Title>
               </TitleWrapper>
+              <OutlineButtonExample />
+              <Hr />
               <ButtonExample />
+              <Hr />
               <IconExample />
               <Hr />
               <CalendarMonthExample />

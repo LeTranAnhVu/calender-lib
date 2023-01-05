@@ -4,10 +4,10 @@ const ButtonExample = () => {
   return (
     <>
       <Button text="Primary" bgColor="primary" size="small" />
-      <Button text="Secondary" bgColor="secondary" size="medium" />
-      <Button text="Error" bgColor="error" size="large" />
+      <Button text="Secondary" bgColor="secondary" />
+      <Button text="Error" bgColor="error" />
       <Button text="Disable" bgColor="disabled" />
-      <Button text="Submit" />
+      <Button text="Submit" size="medium" />
     </>
   )
 }

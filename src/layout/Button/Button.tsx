@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-type ButtonSize = 'small' | 'medium' | 'large'
+type ButtonSize = 'small' | 'medium'
 
 type ButtonBgColor = 'primary' | 'secondary' | 'disabled' | 'error'
 
@@ -10,11 +10,6 @@ type ButtonProps = {
   size?: ButtonSize
 }
 
-/**
- * @param text (require) content of the button.
- * @param bgColor (optional) default color is white.
- * @param size (optional) default size is small.
-/** */
 const Button = ({ bgColor, text, size = 'small' }: ButtonProps) => {
   return (
     <Wrapper bgColor={bgColor} size={size}>
@@ -31,10 +26,11 @@ type WrapperProps = {
 }
 
 const Wrapper = styled.button<WrapperProps>`
-  width: ${({ size }) => (size === 'small' ? '100px' : size === 'medium' ? '150px' : '200px')};
-  padding: ${({ size }) => (size === 'small' ? '0.4em' : '0.5em')};
+  height: ${({ size }) => (size === 'small' ? '42px' : '60px')};
+  width: 120px;
+  padding: 0.25em;
   border: none;
-  border-radius: 0.3em;
+  border-radius: 0.45em;
   background-color: ${({ bgColor, theme }) =>
     bgColor === 'primary'
       ? theme.primary
@@ -52,7 +48,7 @@ const Wrapper = styled.button<WrapperProps>`
       : bgColor === 'disabled'
       ? theme.grey
       : theme.black};
-  font-size: ${({ size }) => (size === 'small' ? '1em' : size === 'medium' ? '1.25em' : '1.5em')};
+  font-size: ${({ size }) => (size === 'small' ? '0.95em' : '1.05em')};
   font-weight: 500;
 
   pointer-events: ${({ bgColor }) => (bgColor === 'disabled' ? 'none' : null)};
