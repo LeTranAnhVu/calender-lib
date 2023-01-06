@@ -28,5 +28,6 @@ export const defaultTheme: DefaultTheme = {
   background: '#242424',
   primaryText: white,
   modalBackground: '#3e3e3e',
-  borderRadius: '8px'
+  borderRadius: '8px',
+  error: red
 }
