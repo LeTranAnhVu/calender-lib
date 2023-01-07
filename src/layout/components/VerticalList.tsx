@@ -13,10 +13,14 @@ export const VerticalItem = styled.li`
   }
 `
 
-export const VerticalList = styled.ul`
+type VerticalListProps = {
+  maxHeight?: number
+}
+export const VerticalList = styled.ul<VerticalListProps>`
   padding: 0;
   overflow: auto;
   border-radius: ${({ theme }) => theme.borderRadius};
   background: ${({ theme }) => theme.secondaryBackground};
   box-shadow: 1px 1px 4px ${({ theme }) => theme.black};
+  ${({ maxHeight }) => maxHeight && 'max-height: ' + maxHeight + 'px'}
 `
