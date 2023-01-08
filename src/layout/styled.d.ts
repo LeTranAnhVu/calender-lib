@@ -2,19 +2,22 @@
 import 'styled-components'
 
 declare module 'styled-components' {
-  export interface DefaultTheme {
-    white: string
-    black: string
-    grey: string
-    red: string
-    blue: string
-    blueDarker: string
-    primary: string
-    success: string
-    danger: string
-    warning: string
-    info: string
-    disabled: string
+  export type Palette = 'white' | 'black' | 'grey' | 'red' | 'blue' | 'blueDarker'
+
+  export type Variant =
+    | Palette
+    | 'primary'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'info'
+    | 'disabled'
+    | 'secondary'
+    | 'error'
+
+  type VariantTheme = Record<Variant, string>
+
+  export interface DefaultTheme extends VariantTheme {
     background: string
     secondaryBackground: string
     overlayBackground: string
