@@ -16,25 +16,26 @@ const Wrapper = styled.div`
 `
 
 type CheckboxGroupProps = {
+  name: string
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   disabled?: boolean
   label?: string
   values: CheckboxValue[]
 }
-function CheckboxGroup({ label, values, onChange, disabled = false }: CheckboxGroupProps) {
+function CheckboxGroup({ name, label, values, onChange, disabled = false }: CheckboxGroupProps) {
   return (
     <Wrapper>
       {label && <p className="label">{label}</p>}
       <VerticalList className="group">
-        {values.map((day) => (
-          <VerticalItem key={day.value}>
+        {values.map((checkbox) => (
+          <VerticalItem key={checkbox.value}>
             <CheckboxField
               disabled={disabled}
               onChange={onChange}
-              name={'day'}
-              checked={day.checked}
-              label={day.label}
-              value={day.value}
+              name={name}
+              checked={checkbox.checked}
+              label={checkbox.label}
+              value={checkbox.value}
             />
           </VerticalItem>
         ))}
