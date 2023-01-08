@@ -2,10 +2,12 @@ import type { ChangeEvent, FormEvent } from 'react'
 import { useRef, useState } from 'react'
 import type { OptionTypeOfSelectField } from '@/layout/components/Form/SelectField'
 import SelectField from '@/layout/components/Form/SelectField'
-import { VerticalItem, VerticalList } from '@/layout/components/VerticalList'
 import { rangeFromOne } from '@/lib/array/range'
 import type { CheckboxValue } from '@/layout/components/Form/CheckboxField'
 import CheckboxGroup from '@/layout/components/Form/CheckboxGroup'
+import RadioGroup from '@/layout/components/Form/RadioGroup'
+import FieldList from '@/layout/components/Form/FieldList'
+import { VerticalItem } from '@/layout/components/VerticalList'
 
 function createOptions(n: number): OptionTypeOfSelectField[] {
   return rangeFromOne(n).map(
@@ -41,10 +43,26 @@ const dayCheckboxValues: CheckboxValue[] = [
   }
 ]
 
+const genders = [
+  {
+    value: 'male',
+    label: 'Male'
+  },
+  {
+    value: 'female',
+    label: 'Female'
+  },
+  {
+    value: 'other',
+    label: 'Other'
+  }
+]
+
 function FormExample() {
   const listRef = useRef<HTMLUListElement>(null)
   const [selectValue, setSelectValue] = useState('dog')
   const [checkboxValues, setCheckboxValues] = useState<CheckboxValue[]>(dayCheckboxValues)
+  const [gender, setGender] = useState('')
   const getScrollableParent = () => {
     return listRef.current
   }
@@ -67,11 +85,17 @@ function FormExample() {
     )
   }
 
+  const handleRadioChanged = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value !== gender) {
+      setGender(event.target.value)
+    }
+  }
+
   return (
     <div>
       <h5>Form example</h5>
       <form onSubmit={handleSubmit}>
-        <VerticalList ref={listRef} style={{ maxWidth: '400px', width: '100%' }}>
+        <FieldList ref={listRef} style={{ maxWidth: '400px', width: '100%' }}>
           <VerticalItem>
             <SelectField
               name="Age"
@@ -83,11 +107,20 @@ function FormExample() {
               optionModalMaxHeight={200}
             />
           </VerticalItem>
-        </VerticalList>
+        </FieldList>
         <CheckboxGroup
+          name="activeDays"
           label="Active days"
           values={checkboxValues}
           onChange={handleCheckboxChanged}
+        />
+
+        <RadioGroup
+          name="gender"
+          label="Gender"
+          value={gender}
+          radioValues={genders}
+          onChange={handleRadioChanged}
         />
       </form>
     </div>

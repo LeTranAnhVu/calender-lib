@@ -24,3 +24,4 @@ export const VerticalList = styled.ul<VerticalListProps>`
   box-shadow: 1px 1px 4px ${({ theme }) => theme.black};
   ${({ maxHeight }) => maxHeight && 'max-height: ' + maxHeight + 'px'}
 `
+

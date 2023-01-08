@@ -1,31 +1,39 @@
 import type { ChangeEvent } from 'react'
-import type { CheckboxValue } from '@/layout/components/Form/CheckboxField'
-import CheckboxField from '@/layout/components/Form/CheckboxField'
+import type { RadioValue } from '@/layout/components/Form/RadioField'
 import { VerticalItem } from '@/layout/components/VerticalList'
+import RadioField from '@/layout/components/Form/RadioField'
 import FieldGroup from '@/layout/components/Form/FieldGroup'
 import FieldList from '@/layout/components/Form/FieldList'
 
-type CheckboxGroupProps = {
+type RadioGroupProps = {
   name: string
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   disabled?: boolean
   label?: string
-  values: CheckboxValue[]
+  value: string
+  radioValues: RadioValue[]
 }
-function CheckboxGroup({ name, label, values, onChange, disabled = false }: CheckboxGroupProps) {
+function RadioGroup({
+  label,
+  name,
+  value,
+  radioValues,
+  onChange,
+  disabled = false
+}: RadioGroupProps) {
   return (
     <FieldGroup>
       {label && <p className="label">{label}</p>}
       <FieldList className="group">
-        {values.map((checkbox) => (
-          <VerticalItem key={checkbox.value}>
-            <CheckboxField
+        {radioValues.map((radio) => (
+          <VerticalItem key={radio.value}>
+            <RadioField
+              selectedValue={value}
               disabled={disabled}
               onChange={onChange}
               name={name}
-              checked={checkbox.checked}
-              label={checkbox.label}
-              value={checkbox.value}
+              label={radio.label}
+              value={radio.value}
             />
           </VerticalItem>
         ))}
@@ -34,4 +42,4 @@ function CheckboxGroup({ name, label, values, onChange, disabled = false }: Chec
   )
 }
 
-export default CheckboxGroup
+export default RadioGroup

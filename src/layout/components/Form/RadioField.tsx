@@ -5,48 +5,46 @@ import { Icon } from '@/layout/components/Icons/Icon'
 import { useRef } from 'react'
 import Field from '@/layout/components/Form/Field'
 
-type CheckboxFieldProps = FieldBase & {
-  checked: boolean
+type RadioFieldProps = FieldBase & {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   value?: string
+  selectedValue: string
 }
 
 const InputWrapper = styled.div``
 
-export type CheckboxValue = {
+export type RadioValue = {
   value: string
   label: string
-  checked: boolean
 }
-function CheckboxField({
+function RadioField({
   name,
   onChange,
   label,
-  checked,
+  selectedValue,
   value = '',
   disabled = false
-}: CheckboxFieldProps) {
-  const checkboxRef = useRef<HTMLInputElement>(null)
+}: RadioFieldProps) {
+  const radioRef = useRef<HTMLInputElement>(null)
   const handleClick = () => {
-    if (!checkboxRef.current) {
+    if (!radioRef.current) {
       return
     }
 
-    checkboxRef.current.checked = !checked
     const event = new Event('input', { bubbles: true })
-    checkboxRef.current.dispatchEvent(event)
+    radioRef.current.dispatchEvent(event)
   }
 
   return (
     <Field onClick={handleClick} disabled={disabled}>
       <p className="label">{label}</p>
       <InputWrapper>
-        {checked && <Icon className="selected-icon" icon="check" />}
+        {value === selectedValue && <Icon className="selected-icon" icon="check" />}
         <input
-          ref={checkboxRef}
+          ref={radioRef}
           onInput={onChange}
           style={{ width: 0, height: 0, visibility: 'hidden' }}
-          type="checkbox"
+          type="radio"
           name={name}
           value={value}
         />
@@ -55,4 +53,4 @@ function CheckboxField({
   )
 }
 
-export default CheckboxField
+export default RadioField

@@ -17,6 +17,7 @@ declare module 'styled-components' {
     disabled: string
     background: string
     secondaryBackground: string
+    fieldBackground: string
     overlayBackground: string
     primaryText: string
     modalBackground: string
