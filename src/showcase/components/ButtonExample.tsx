@@ -1,4 +1,4 @@
-import Button from '@/layout/Button/Button'
+import Button from '@/layout/components/Button/Button'
 
 const ButtonExample = () => {
   const handleMousePosition = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
