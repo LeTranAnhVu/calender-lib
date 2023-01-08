@@ -3,33 +3,13 @@ import type { ChangeEvent } from 'react'
 import styled from 'styled-components'
 import { Icon } from '@/layout/components/Icons/Icon'
 import { useRef } from 'react'
+import Field from '@/layout/components/Form/Field'
 
 type CheckboxFieldProps = FieldBase & {
   checked: boolean
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   value?: string
 }
-
-type FieldProps = {
-  disabled: boolean
-}
-const Field = styled.div<FieldProps>`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-
-  > .label {
-    margin: 5px 0;
-  }
-
-  ${({ disabled }) =>
-    disabled &&
-    `pointer-events: none;
-    opacity: 0.4;`}
-`
 
 const InputWrapper = styled.div``
 

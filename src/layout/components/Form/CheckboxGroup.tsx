@@ -1,19 +1,9 @@
 import type { ChangeEvent } from 'react'
 import type { CheckboxValue } from '@/layout/components/Form/CheckboxField'
 import CheckboxField from '@/layout/components/Form/CheckboxField'
-import { VerticalItem, VerticalList } from '@/layout/components/VerticalList'
-import styled from 'styled-components'
-
-const Wrapper = styled.div`
-  > .label {
-    margin-bottom: 5px;
-    padding-left: 10px;
-    color: ${({ theme }) => theme.disabled};
-  }
-  .group {
-    margin-top: 0;
-  }
-`
+import { VerticalItem } from '@/layout/components/VerticalList'
+import FieldGroup from '@/layout/components/Form/FieldGroup'
+import FieldList from '@/layout/components/Form/FieldList'
 
 type CheckboxGroupProps = {
   name: string
@@ -24,9 +14,9 @@ type CheckboxGroupProps = {
 }
 function CheckboxGroup({ name, label, values, onChange, disabled = false }: CheckboxGroupProps) {
   return (
-    <Wrapper>
+    <FieldGroup>
       {label && <p className="label">{label}</p>}
-      <VerticalList className="group">
+      <FieldList className="group">
         {values.map((checkbox) => (
           <VerticalItem key={checkbox.value}>
             <CheckboxField
@@ -39,8 +29,8 @@ function CheckboxGroup({ name, label, values, onChange, disabled = false }: Chec
             />
           </VerticalItem>
         ))}
-      </VerticalList>
-    </Wrapper>
+      </FieldList>
+    </FieldGroup>
   )
 }
 

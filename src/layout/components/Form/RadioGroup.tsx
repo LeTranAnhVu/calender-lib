@@ -1,19 +1,9 @@
 import type { ChangeEvent } from 'react'
 import type { RadioValue } from '@/layout/components/Form/RadioField'
-import { VerticalItem, VerticalList } from '@/layout/components/VerticalList'
-import styled from 'styled-components'
+import { VerticalItem } from '@/layout/components/VerticalList'
 import RadioField from '@/layout/components/Form/RadioField'
-
-const Wrapper = styled.div`
-  > .label {
-    margin-bottom: 5px;
-    padding-left: 10px;
-    color: ${({ theme }) => theme.disabled};
-  }
-  .group {
-    margin-top: 0;
-  }
-`
+import FieldGroup from '@/layout/components/Form/FieldGroup'
+import FieldList from '@/layout/components/Form/FieldList'
 
 type RadioGroupProps = {
   name: string
@@ -32,9 +22,9 @@ function RadioGroup({
   disabled = false
 }: RadioGroupProps) {
   return (
-    <Wrapper>
+    <FieldGroup>
       {label && <p className="label">{label}</p>}
-      <VerticalList className="group">
+      <FieldList className="group">
         {radioValues.map((radio) => (
           <VerticalItem key={radio.value}>
             <RadioField
@@ -47,8 +37,8 @@ function RadioGroup({
             />
           </VerticalItem>
         ))}
-      </VerticalList>
-    </Wrapper>
+      </FieldList>
+    </FieldGroup>
   )
 }
 

@@ -25,6 +25,7 @@ export const defaultTheme: DefaultTheme = {
   disabled: grey,
   background: '#242424',
   secondaryBackground: '#262626',
+  fieldBackground: '#303030',
   primaryText: white,
   modalBackground: '#3e3e3e',
   overlayBackground: '#8c8c8c3d',
