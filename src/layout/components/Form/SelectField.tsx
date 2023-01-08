@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import type { FieldBase } from '@/layout/components/Form/types'
-import { Icon } from '@/layout/components/Icons/Icon'
+import Icon from '@/layout/components/Icon'
 import { VerticalItem, VerticalList } from '@/layout/components/VerticalList'
 import type { ChangeEvent } from 'react'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'

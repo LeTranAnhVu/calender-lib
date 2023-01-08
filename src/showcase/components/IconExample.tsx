@@ -1,4 +1,4 @@
-import { Icon } from '@/layout/components/Icons/Icon'
+import Icon from '@/layout/components/Icon'
 
 const IconExample = () => {
   return (

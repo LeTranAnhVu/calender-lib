@@ -10,9 +10,6 @@ type Props = FontAwesomeIconProps & {
   variant?: Variant
 }
 
-// <<<<<<< HEAD
-export const Icon = (props: Props) => <StyledIcon {...props} />
-
 const StyledIcon = styled(FontAwesomeIcon)<Props>`
   > path {
     color: ${({ variant, theme }) =>
@@ -20,13 +17,5 @@ const StyledIcon = styled(FontAwesomeIcon)<Props>`
   }
 `
 
-
-// =======
-// export const Icon = ({ icon, variant }: Props) => <StyledIcon icon={icon} variant={variant} />
-//
-// type StyledIconProps = {
-//   variant?: Variant
-// }
-//
-// const StyledIcon = styled(FontAwesomeIcon)<StyledIconProps>`
-// >>>>>>> main
+const Icon = (props: Props) => <StyledIcon {...props} />
+export default Icon

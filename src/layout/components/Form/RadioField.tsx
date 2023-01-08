@@ -1,7 +1,7 @@
 import type { FieldBase } from '@/layout/components/Form/types'
 import type { ChangeEvent } from 'react'
 import styled from 'styled-components'
-import { Icon } from '@/layout/components/Icons/Icon'
+import Icon from '@/layout/components/Icon'
 import { useRef } from 'react'
 import Field from '@/layout/components/Form/Field'
 
