@@ -45,7 +45,7 @@ function CheckboxField({
         <input
           ref={checkboxRef}
           onInput={onChange}
-          style={{ width: 0, height: 0, visibility: 'hidden' }}
+          style={{ display: 'none' }}
           type="checkbox"
           name={name}
           value={value}
