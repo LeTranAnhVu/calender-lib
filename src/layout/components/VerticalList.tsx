@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Panel from '@/layout/components/Panel'
 
-export const VerticalItem = styled.div`
+export const VerticalItem = styled.li`
   border-bottom: 0.5px solid ${({ theme }) => theme.grey};
   display: flex;
   width: 100%;
@@ -13,7 +13,14 @@ export const VerticalItem = styled.div`
   }
 `
 
-export const VerticalList = styled(Panel)`
+type VerticalListProps = {
+  maxHeight?: number
+}
+export const VerticalList = styled.ul<VerticalListProps>`
   padding: 0;
   overflow: auto;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  background: ${({ theme }) => theme.secondaryBackground};
+  box-shadow: 1px 1px 4px ${({ theme }) => theme.black};
+  ${({ maxHeight }) => maxHeight && 'max-height: ' + maxHeight + 'px'}
 `
