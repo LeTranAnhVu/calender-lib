@@ -3,27 +3,20 @@ import { rangeFromOne } from '@/lib/array/range'
 import styled from 'styled-components'
 
 function createItems() {
-  return rangeFromOne(100).map((i) => ({ text: 'this is item no: ' + i }))
+  return rangeFromOne(10).map((i) => ({ text: 'this is item no: ' + i }))
 }
 
 function VerticalListExample() {
   return (
-    <Wrapper>
+    <div style={{ maxWidth: '400px', width: '100%' }}>
       <h5>Vertical list</h5>
-      <VerticalList maxHeight={400} style={{ maxWidth: '400px', width: '100%' }}>
+      <VerticalList maxHeight={200}>
         {createItems().map((item) => (
           <VerticalItem key={item.text}>{item.text}</VerticalItem>
         ))}
       </VerticalList>
-    </Wrapper>
+    </div>
   )
 }
 
 export default VerticalListExample
-
-const Wrapper = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  flex-direction: column;
-`

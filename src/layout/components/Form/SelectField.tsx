@@ -230,10 +230,7 @@ function SelectField({
         <Icon className="up" icon="angle-up" />
         <Icon className="down" icon="angle-down" />
 
-        <select
-          onChange={onChange}
-          ref={realSelectRef}
-          style={{ width: 0, height: 0, visibility: 'hidden' }}>
+        <select onChange={onChange} ref={realSelectRef} style={{ display: 'none' }}>
           {[{ ...noneOption }, ...options].map((opt) => (
             <option value={opt.value} onClick={() => handleOptionSelected(opt)} key={opt.label}>
               {opt.label}

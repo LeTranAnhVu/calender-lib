@@ -43,7 +43,7 @@ function RadioField({
         <input
           ref={radioRef}
           onInput={onChange}
-          style={{ width: 0, height: 0, visibility: 'hidden' }}
+          style={{ display: 'none' }}
           type="radio"
           name={name}
           value={value}
