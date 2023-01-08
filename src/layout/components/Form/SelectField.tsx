@@ -18,13 +18,25 @@ type SelectProps = {
   isShowed: SelectModalState
 }
 
-const Field = styled.div`
+type FieldProps = {
+  disabled: boolean
+}
+const Field = styled.div<FieldProps>`
   width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+
+  > .label {
+    margin: 5px 0;
+  }
+
+  ${({ disabled }) =>
+    disabled &&
+    `pointer-events: none;
+    opacity: 0.4;`}
 `
 
 const SelectWrapper = styled.div`
@@ -99,7 +111,8 @@ function SelectField({
   label,
   options,
   value = '',
-  optionModalMaxHeight
+  optionModalMaxHeight,
+  disabled = false
 }: SelectFieldProps) {
   const selectedOption = options.find((option) => option.value === value) || noneOption
   const [selectState, setSelectState] = useState<SelectProps>({ isShowed: SelectModalState.Closed })
@@ -196,8 +209,8 @@ function SelectField({
   }
 
   return (
-    <Field onClick={handleClick}>
-      <p>{label}</p>
+    <Field disabled={disabled} onClick={handleClick}>
+      <p className="label">{label}</p>
       <SelectWrapper ref={selectWrapperRef}>
         <span className="current-value">{selectedOption.label}</span>
         <Select
