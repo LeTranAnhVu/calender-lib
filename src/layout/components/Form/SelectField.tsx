@@ -68,7 +68,7 @@ const Option = styled(VerticalItem)`
   align-items: center;
   padding-left: 35px;
   &:active {
-    background: red;
+    filter: brightness(70%);
   }
 
   .selected-icon {
