@@ -6,18 +6,17 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { RootStyles } from '@/lib/themes/root'
 import IconExample from './components/IconExample'
-
 import ModalContextProvider from '@/layout/components/contexts/ModalContextProvider'
 import TimeContextProvider from '@/layout/components/contexts/TimeContextProvider'
+import ButtonExample from './components/ButtonExample'
 import { Normalize } from 'styled-normalize'
 import ModalExamples from './components/ModalExamples'
 import Modal from '@/layout/components/Modals/Modal'
 import VerticalListExample from '@/showcase/components/VerticalListExample'
 import HorizontalListExample from '@/showcase/components/HorizontalListExample'
 import FormExample from '@/showcase/components/Form/FormExample'
-import { far } from '@fortawesome/free-regular-svg-icons'
 
-library.add(fas, far)
+library.add(fas)
 
 function App() {
   return (
@@ -32,6 +31,8 @@ function App() {
               <TitleWrapper>
                 <Title>Calendar Lib Show Case</Title>
               </TitleWrapper>
+              <Hr />
+              <ButtonExample />
               <Hr />
               <IconExample />
               <Hr />
