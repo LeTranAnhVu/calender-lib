@@ -26,8 +26,10 @@ export const defaultTheme: DefaultTheme = {
   warning: yellow,
   disabled: greyLighter,
   background: '#242424',
+  secondaryBackground: '#262626',
   primaryText: white,
   modalBackground: '#3e3e3e',
   borderRadius: '8px',
-  error: red
+  error: red,
+  overlayBackground: '#8c8c8c3d'
 }

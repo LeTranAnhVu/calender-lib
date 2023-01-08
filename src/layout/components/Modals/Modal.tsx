@@ -69,6 +69,5 @@ const ModalWrapper = styled.div`
   width: 100vw;
   z-index: 999;
   justify-content: center;
-  background: #8c8c8c3d;
+  background: ${({ theme }) => theme.overlayBackground}};
 `
-

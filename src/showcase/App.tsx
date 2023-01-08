@@ -12,6 +12,8 @@ import ButtonExample from './components/ButtonExample'
 import { Normalize } from 'styled-normalize'
 import ModalExamples from './components/ModalExamples'
 import Modal from '@/layout/components/Modals/Modal'
+import VerticalListExample from '@/showcase/components/VerticalListExample'
+import HorizontalListExample from '@/showcase/components/HorizontalListExample'
 
 library.add(fas)
 
@@ -33,6 +35,10 @@ function App() {
               <Hr />
               <IconExample />
               <Hr />
+              <HorizontalListExample />
+              <Hr />
+              <VerticalListExample />
+              <Hr />
               <CalendarMonthExample />
               <Hr />
               <CalendarDayExample />
@@ -51,7 +57,7 @@ export default App
 const AppWrapper = styled.div`
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
 `
 
 const TitleWrapper = styled.div``
