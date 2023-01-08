@@ -20,6 +20,7 @@ declare module 'styled-components' {
   export interface DefaultTheme extends VariantTheme {
     background: string
     secondaryBackground: string
+    fieldBackground: string
     overlayBackground: string
     primaryText: string
     modalBackground: string

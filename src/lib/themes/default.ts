@@ -27,6 +27,7 @@ export const defaultTheme: DefaultTheme = {
   disabled: greyLighter,
   background: '#242424',
   secondaryBackground: '#262626',
+  fieldBackground: '#303030',
   primaryText: white,
   modalBackground: '#3e3e3e',
   borderRadius: '8px',

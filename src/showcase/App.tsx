@@ -14,6 +14,7 @@ import ModalExamples from './components/ModalExamples'
 import Modal from '@/layout/components/Modals/Modal'
 import VerticalListExample from '@/showcase/components/VerticalListExample'
 import HorizontalListExample from '@/showcase/components/HorizontalListExample'
+import FormExample from '@/showcase/components/Form/FormExample'
 
 library.add(fas)
 
@@ -39,11 +40,14 @@ function App() {
               <Hr />
               <VerticalListExample />
               <Hr />
+              <FormExample />
+              <Hr />
               <CalendarMonthExample />
               <Hr />
               <CalendarDayExample />
               <Hr />
               <ModalExamples />
+              <Hr />
             </AppWrapper>
           </>
         </ModalContextProvider>

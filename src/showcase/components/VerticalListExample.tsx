@@ -10,7 +10,7 @@ function VerticalListExample() {
   return (
     <Wrapper>
       <h5>Vertical list</h5>
-      <VerticalList style={{ maxHeight: '400px', maxWidth: '400px', width: '100%' }}>
+      <VerticalList maxHeight={400} style={{ maxWidth: '400px', width: '100%' }}>
         {createItems().map((item) => (
           <VerticalItem key={item.text}>{item.text}</VerticalItem>
         ))}
