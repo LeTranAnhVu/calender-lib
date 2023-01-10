@@ -3,7 +3,7 @@ import type { ChangeEvent } from 'react'
 import styled from 'styled-components'
 import Icon from '@/layout/components/Icon'
 import { useRef } from 'react'
-import Field from '@/layout/components/Form/Field'
+import Field, { LabelField } from '@/layout/components/Form/Field'
 
 type RadioFieldProps = FieldBase & {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
@@ -25,31 +25,21 @@ function RadioField({
   value = '',
   disabled = false
 }: RadioFieldProps) {
-  const radioRef = useRef<HTMLInputElement>(null)
-  const handleClick = () => {
-    if (!radioRef.current) {
-      return
-    }
-
-    const event = new Event('input', { bubbles: true })
-    radioRef.current.dispatchEvent(event)
-  }
-
   return (
-    <Field onClick={handleClick} disabled={disabled}>
+    <LabelField disabled={disabled}>
       <p className="label">{label}</p>
       <InputWrapper>
         {value === selectedValue && <Icon className="selected-icon" icon="check" />}
         <input
-          ref={radioRef}
-          onInput={onChange}
+          // ref={radioRef}
+          onChange={onChange}
           style={{ display: 'none' }}
           type="radio"
           name={name}
           value={value}
         />
       </InputWrapper>
-    </Field>
+    </LabelField>
   )
 }
 

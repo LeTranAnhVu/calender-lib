@@ -2,8 +2,7 @@ import type { FieldBase } from '@/layout/components/Form/types'
 import type { ChangeEvent } from 'react'
 import styled from 'styled-components'
 import Icon from '@/layout/components/Icon'
-import { useRef } from 'react'
-import Field from '@/layout/components/Form/Field'
+import { LabelField } from './Field'
 
 type CheckboxFieldProps = FieldBase & {
   checked: boolean
@@ -26,32 +25,21 @@ function CheckboxField({
   value = '',
   disabled = false
 }: CheckboxFieldProps) {
-  const checkboxRef = useRef<HTMLInputElement>(null)
-  const handleClick = () => {
-    if (!checkboxRef.current) {
-      return
-    }
-
-    checkboxRef.current.checked = !checked
-    const event = new Event('input', { bubbles: true })
-    checkboxRef.current.dispatchEvent(event)
-  }
-
   return (
-    <Field onClick={handleClick} disabled={disabled}>
+    <LabelField disabled={disabled}>
       <p className="label">{label}</p>
       <InputWrapper>
         {checked && <Icon className="selected-icon" icon="check" />}
         <input
-          ref={checkboxRef}
-          onInput={onChange}
+          checked={checked}
+          onChange={onChange}
           style={{ display: 'none' }}
           type="checkbox"
           name={name}
           value={value}
         />
       </InputWrapper>
-    </Field>
+    </LabelField>
   )
 }
 
