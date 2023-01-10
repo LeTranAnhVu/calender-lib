@@ -8,6 +8,7 @@ import CheckboxGroup from '@/layout/components/Form/CheckboxGroup'
 import RadioGroup from '@/layout/components/Form/RadioGroup'
 import FieldList from '@/layout/components/Form/FieldList'
 import { VerticalItem } from '@/layout/components/VerticalList'
+import ToggleSwitch from '@/layout/components/Form/ToggleSwitch'
 
 function createOptions(n: number): OptionTypeOfSelectField[] {
   return rangeFromOne(n).map(
@@ -24,7 +25,7 @@ const dayCheckboxValues: CheckboxValue[] = [
   {
     value: 'tue',
     label: 'Tuesday',
-    checked: false
+    checked: true
   },
   {
     value: 'wed',
@@ -63,8 +64,14 @@ function FormExample() {
   const [selectValue, setSelectValue] = useState('dog')
   const [checkboxValues, setCheckboxValues] = useState<CheckboxValue[]>(dayCheckboxValues)
   const [gender, setGender] = useState('')
+  const [isAirplaneMode, setIsAirplaneMode] = useState(true)
+
   const getScrollableParent = () => {
     return listRef.current
+  }
+
+  const handleSwitchChanged = (event: ChangeEvent<HTMLInputElement>) => {
+    setIsAirplaneMode(event.target.checked)
   }
 
   const handleSubmit = (e: FormEvent) => {
@@ -97,7 +104,16 @@ function FormExample() {
       <form onSubmit={handleSubmit}>
         <FieldList ref={listRef} style={{ maxWidth: '400px', width: '100%' }}>
           <VerticalItem>
+            <ToggleSwitch
+              checked={isAirplaneMode}
+              onChange={handleSwitchChanged}
+              label={'Airplane Mode'}
+              name={'airplaneMode'}
+            />
+          </VerticalItem>
+          <VerticalItem>
             <SelectField
+              disabled={isAirplaneMode}
               name="Age"
               label="Your age"
               options={createOptions(40)}
