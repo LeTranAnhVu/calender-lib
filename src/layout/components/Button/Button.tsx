@@ -1,8 +1,8 @@
 import type { Variant } from 'styled-components'
 import styled from 'styled-components'
-import Icon from '../components/Icon'
+import Icon from '../Icon'
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
-import type { ElementSize } from '../types'
+import type { ElementSize } from '../../types'
 import type { MouseEventHandler, PropsWithChildren } from 'react'
 import variantToColor from '@/lib/helpers/variantToColor'
 
