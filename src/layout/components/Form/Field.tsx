@@ -1,10 +1,11 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 type FieldProps = {
   disabled: boolean
+  noActive?: boolean
 }
 
-const Field = styled.div<FieldProps>`
+export const baseFieldStyle = css<FieldProps>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -16,9 +17,12 @@ const Field = styled.div<FieldProps>`
     margin: 5px 0;
   }
 
-  &:active {
+  ${({ noActive }) =>
+    !noActive &&
+    `
+    &:active {
     filter: brightness(70%);
-  }
+  }`}
 
   ${({ disabled }) =>
     disabled &&
@@ -26,4 +30,35 @@ const Field = styled.div<FieldProps>`
     opacity: 0.4;`}
 `
 
-export default Field
+const Field = styled.label<FieldProps>`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  > .label {
+    margin: 5px 0;
+  }
+
+  ${({ noActive }) =>
+    !noActive &&
+    `
+    &:active {
+    filter: brightness(70%);
+  }`}
+
+  ${({ disabled }) =>
+    disabled &&
+    `pointer-events: none;
+    opacity: 0.4;`}
+`
+
+export const LabelField = styled.label`
+  ${baseFieldStyle}
+`
+
+export const DivField = styled.div`
+  ${baseFieldStyle}
+`
